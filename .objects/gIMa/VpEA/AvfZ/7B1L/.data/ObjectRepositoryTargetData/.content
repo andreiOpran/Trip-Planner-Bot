@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="Dz3nrudQI0ygGMiRhZyXjg" Reference="B_4lzU5DB0unScnNBHgJSw/7B1LoCChd0WLALUDHoEPCw" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="https://www.booking.com/searchresults.html?ss=Bra%C5%9Fov%2C+Brasov%2C+Romania&amp;efdco=1&amp;label=gen173nr-10CAEoggI46AdIM1gEaMABiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALdoKrKBsACAdICJDhhMjFhNzgwLWI0NWItNGUxMC05N2MwLWFmZDYwNzVlOTQyNNgCAeACAQ&amp;aid=304142&amp;lang=en-us&amp;sb=1&amp;src_elem=sb&amp;src=index&amp;dest_id=-1153613&amp;dest_type=city&amp;ac_position=0&amp;ac_click_type=b&amp;ac_langcode=en&amp;ac_suggestion_list_length=5&amp;search_selected=true&amp;search_pageview_id=21635a6e793002fc&amp;ac_meta=GhAyMTYzNWE2ZTc5MzAwMmZjIAAoATICZW46BkJyYXNvdg%3D%3D&amp;checkin=2026-05-15&amp;checkout=2026-07-20&amp;group_adults=3&amp;no_rooms=1&amp;group_children=0" ContentHash="qju9uvNR7UWZK4KJEQeNxw" DesignTimeRectangle="692, 416, 816, 7958" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aria-role='list' tag='DIV' /&gt;" Guid="21cb4b97-890c-4ca2-a600-98391f1304c6" Reference="B_4lzU5DB0unScnNBHgJSw/7B1LoCChd0WLALUDHoEPCw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Booking.com: Hotels in Braşov. Book your hotel now!' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="7243b87f3a4edc281c54f540c8c262c8.png" xmlns="">0tFw8BsB-fkeS0WR0GoFZhQ</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">ExtractData</x:String>
+    <p:InArgument x:TypeArguments="x:String" x:Key="ExtractDataSettings" xml:space="preserve">&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured' AddCvHeader='true' IsScrollEnabled='false'&gt;
+	&lt;Column xsi:type='DataColumn' ReferenceName='Column0' Name='HotelName'&gt;
+		&lt;IsValidName&gt;true&lt;/IsValidName&gt;
+		&lt;ValidationErrorMessage /&gt;
+		&lt;IsExtra&gt;false&lt;/IsExtra&gt;
+		&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;
+		&lt;Format xsi:type='TextColumnFormat' /&gt;
+	&lt;/Column&gt;
+	&lt;Column xsi:type='DataColumn' ReferenceName='Column1' Name='HotelUrl'&gt;
+		&lt;IsValidName&gt;true&lt;/IsValidName&gt;
+		&lt;ValidationErrorMessage /&gt;
+		&lt;IsExtra&gt;true&lt;/IsExtra&gt;
+		&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;
+		&lt;Format xsi:type='TextColumnFormat' /&gt;
+	&lt;/Column&gt;
+	&lt;Column xsi:type='DataColumn' ReferenceName='Column2' Name='Rating'&gt;
+		&lt;IsValidName&gt;true&lt;/IsValidName&gt;
+		&lt;ValidationErrorMessage /&gt;
+		&lt;IsExtra&gt;false&lt;/IsExtra&gt;
+		&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;
+		&lt;Format xsi:type='TextColumnFormat' /&gt;
+	&lt;/Column&gt;
+	&lt;Column xsi:type='DataColumn' ReferenceName='Column3' Name='Price'&gt;
+		&lt;IsValidName&gt;true&lt;/IsValidName&gt;
+		&lt;ValidationErrorMessage /&gt;
+		&lt;IsExtra&gt;false&lt;/IsExtra&gt;
+		&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;
+		&lt;Format xsi:type='TextColumnFormat' /&gt;
+	&lt;/Column&gt;
+	&lt;Column xsi:type='DataNextLink' /&gt;
+&lt;/Table&gt;</p:InArgument>
+    <TargetAnchorable x:Key="NextLinkTarget" BrowserURL="booking.com/searchresults.html" CVScreenId="31089d57-459b-4dc1-91c9-44f833cab7f4" CvElementArea="1018, 389, 164, 50" CvTextArea="1034, 406, 132, 15" CvTextArgument="Load more results" CvType="Button" DesignTimeRectangle="1019, 390, 161, 48" ElementType="Button" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aaname='Load more results' parentid='bodyconstraint-inner' tag='BUTTON' type='button' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Load more results' parentid='bodyconstraint-inner' tag='BUTTON' type='button' class='de576f5064 b46cd7aad7 d0a01e3d83 dda427e6b5 eed37d6a9d bbf83acb81 a0ddd706cc' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Load more results' /&gt;" Guid="d104a555-b0cd-4371-b532-d0ccf3abe93b" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Booking.com: Hotels in Braşov. Book your hotel now!' /&gt;" SearchSteps="FuzzySelector, CV" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target CVScreenId="31089d57-459b-4dc1-91c9-44f833cab7f4" CvElementArea="1018, 389, 164, 50" CvTextArea="1034, 406, 132, 15" CvTextArgument="Load more results" CvType="Button" DesignTimeRectangle="1035, 402, 129, 24" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Load more results' parentid='bodyconstraint-inner' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Load more results' parentid='bodyconstraint-inner' tag='SPAN' type='' class='ca2ca5203b' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' matching:parentid='fuzzy' fuzzylevel:parentid='0.0' matching:class='fuzzy' fuzzylevel:class='0.0' check:innerText='Load more results' /&gt;" Guid="c90a3a4b-5f83-4e82-875c-6ad4d16faf6b" SearchSteps="FuzzySelector, CV" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <TargetAnchorable.PointOffset>
+        <PointOffset X="0" Y="0" />
+      </TargetAnchorable.PointOffset>
+    </TargetAnchorable>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Chrome Booking.com Hotels in Bucharest. Book your hotel now!",
+  "Type": "App",
+  "Id": "gIMaq62gQkOIDyGQbf9cbA",
+  "Reference": "B_4lzU5DB0unScnNBHgJSw/gIMaq62gQkOIDyGQbf9cbA",
+  "Created": "2025-12-23T12:43:15.6482002Z",
+  "Updated": "2025-12-23T12:43:15.6482002Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.16.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

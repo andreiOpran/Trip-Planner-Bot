@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Chrome Booking.com Hotels in Bucharest. Book ",
+  "Type": "Screen",
+  "Id": "AvfZ8cYH50ycBIFe44JTXQ",
+  "Reference": "B_4lzU5DB0unScnNBHgJSw/AvfZ8cYH50ycBIFe44JTXQ",
+  "ParentRef": "B_4lzU5DB0unScnNBHgJSw/VpEAJ_19xUCu_oN7UmJlRQ",
+  "Created": "2025-12-23T12:43:15.7006006Z",
+  "Updated": "2025-12-23T12:43:15.7006006Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.16.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
