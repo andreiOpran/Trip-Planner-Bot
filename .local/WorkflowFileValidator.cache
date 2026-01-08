@@ -1,7 +1,7 @@
-InitConfig.xaml|639033376139677948
-Main.xaml|639033397776214239
-SendEmail.xaml|639033376139756443
-ScrapeBooking.xaml|639033376139736365
+InitConfig.xaml|639033868821948349
+Main.xaml|639033986123034907
+SendEmail.xaml|639033868821972158
+ScrapeBooking.xaml|639034932630082185
 Workflows/WF_WriteValidTripsToSummary.xaml|639021915490346736
 Workflows/WF_ReadInput.xaml|639015314277587295
 Workflows/WF_PrepareOutput.xaml|639021911438379351
@@ -9,3 +9,9 @@ Workflows/WF_ComputeBudgets.xaml|639021928721638105
 Workflows/WF_FilterAndSortOptions.xaml|639024556627927826
 Workflows/WF_ScoreSummary.xaml|639024636147890877
 Workflows/WF_ValidateInput.xaml|639016770976127816
+Workflows/WF_ComputeBudgets.xaml|639033868821972158
+Workflows/WF_PrepareOutput.xaml|639033868821972158
+Workflows/WF_ReadInput.xaml|639033868822001015
+Workflows/WF_WriteValidTripsToSummary.xaml|639033868822023535
+Workflows/WF_ScoreSummary.xaml|639033971367522396
+Workflows/WF_ValidateInput.xaml|639033868822011056
