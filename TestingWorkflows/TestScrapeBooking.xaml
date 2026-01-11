@@ -79,7 +79,7 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="TestScrapeBooking" sap:VirtualizedContainerService.HintSize="870,1733" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="TestScrapeBooking" sap:VirtualizedContainerService.HintSize="870,1676" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_DateTest" />
     </Sequence.Variables>
@@ -89,13 +89,13 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:ReadRange Range="{x:Null}" WorkbookPathResource="{x:Null}" AddHeaders="True" DataTable="[dt_DateTest]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="488,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" PreserveFormat="True" SheetName="Sheet1" WorkbookPath="TripData.xlsx" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_DateTest]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="488,1590" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_DateTest]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="488,1533" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="486,1417" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="486,1360" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dt_BookingResults" />
             </Sequence.Variables>
@@ -105,13 +105,13 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,179" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[String.Join(&quot;, &quot;, CurrentRow.ItemArray)]" />
-            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="452,739" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="452,682" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <TryCatch.Variables>
                 <Variable x:TypeArguments="sd:DataTable" Name="dt_BookingFinalResults" />
                 <Variable x:TypeArguments="sd:DataTable" Name="out_BookingFinalResults" />
               </TryCatch.Variables>
               <TryCatch.Try>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ScrapeBooking - Invoke Workflow File (ScrapeBooking.xaml)" sap:VirtualizedContainerService.HintSize="450,207" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ScrapeBooking.xaml">
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ScrapeBooking - Invoke Workflow File (ScrapeBooking.xaml)" sap:VirtualizedContainerService.HintSize="450,150" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\WF_ScrapeBooking.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="x:Int32" x:Key="in_Guests">[CInt(CurrentRow("Guests"))]</InArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="in_CheckOutDate">[CurrentRow("CheckOutDate").ToString]</InArgument>
