@@ -60,6 +60,7 @@
       <x:String>UiPath.Shared.Activities.Business</x:String>
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CD1BA716876_v2_sub_chat_sub_completion_Create.Bundle</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -131,9 +132,10 @@
       <AssemblyReference>System.Linq.Parallel</AssemblyReference>
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>CD1BA716876_v2_sub_c.1Tbxw1Zo1BC1RKhCE3T8b752</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ScrapeBooking" sap:VirtualizedContainerService.HintSize="870,10746" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ScrapeBooking" sap:VirtualizedContainerService.HintSize="867,10746" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_HotelResults" />
     </Sequence.Variables>

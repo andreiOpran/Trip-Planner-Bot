@@ -1,5 +1,7 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Get_Weather" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Get_Weather" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
+    <x:Property Name="in_CheckOutDate" Type="InArgument(x:String)" />
+    <x:Property Name="in_CheckInDate" Type="InArgument(x:String)" />
     <x:Property Name="out_TripId" Type="OutArgument(x:String)" />
     <x:Property Name="in_TripId" Type="InArgument(x:String)" />
     <x:Property Name="out_WeatherDescription" Type="OutArgument(x:String)" />
@@ -56,6 +58,9 @@
       <x:String>UiPath.Web</x:String>
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CD1BA716876_v2_sub_chat_sub_completion_Create.Bundle</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -121,9 +126,15 @@
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
       <AssemblyReference>System.Collections.Specialized</AssemblyReference>
       <AssemblyReference>UiPath.Web</AssemblyReference>
+      <AssemblyReference>CD1BA716876_v2_sub_c.1Tbxw1Zo1BC1RKhCE3T8b752</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Get_Weather" sap:VirtualizedContainerService.HintSize="867,1165" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Get_Weather" sap:VirtualizedContainerService.HintSize="1089,1433" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_GeoJson" />
       <Variable x:TypeArguments="njl:JObject" Name="jo_GeoData" />
@@ -131,6 +142,9 @@
       <Variable x:TypeArguments="x:String" Name="str_Longitude" />
       <Variable x:TypeArguments="x:String" Name="str_WeatherJson" />
       <Variable x:TypeArguments="njl:JObject" Name="jo_WeatherData" />
+      <Variable x:TypeArguments="s:DateTime" Name="CheckInDate" />
+      <Variable x:TypeArguments="s:DateTime" Name="CheckOutDate" />
+      <Variable x:TypeArguments="x:Int32" Name="int_PresentYearDifference" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -155,9 +169,9 @@
       </ui:HttpClient.UrlSegments>
     </ui:HttpClient>
     <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="479,174" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_2" JsonObject="[jo_GeoData]" JsonString="[str_GeoJson]" />
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,273" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
-        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
             <ui:AssignOperation.To>
               <OutArgument x:TypeArguments="x:String">[str_Latitude]</OutArgument>
@@ -174,10 +188,34 @@
               <InArgument x:TypeArguments="x:String">[jo_GeoData("results")(0)("longitude").ToString]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:DateTime">[CheckInDate]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(in_CheckInDate, "d MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:DateTime">[CheckOutDate]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(in_CheckOutDate, "d MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:Int32">[int_PresentYearDifference]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:Int32">[CheckInDate.Year - (DateTime.Now.Year - 1)]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request get weather" EnableSSLVerification="True" EndPoint="[&quot;https://api.open-meteo.com/v1/forecast?latitude=&quot; + str_Latitude + &quot;&amp;longitude=&quot; + str_Longitude + &quot;&amp;daily=temperature_2m_mean,precipitation_probability_max&amp;timezone=auto&quot;]" sap:VirtualizedContainerService.HintSize="479,103" sap2010:WorkflowViewState.IdRef="HttpClient_3" Method="GET" Result="[str_WeatherJson]" TimeoutMS="6000">
+    <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request get weather" EnableSSLVerification="True" EndPoint="[&quot;https://archive-api.open-meteo.com/v1/archive?latitude=&quot; + str_Latitude + &quot;&amp;longitude=&quot; + str_Longitude + &quot;&amp;start_date=&quot; + CheckInDate.AddYears(-int_PresentYearDifference).ToString(&quot;yyyy-MM-dd&quot;) + &quot;&amp;end_date=&quot; + CheckOutDate.AddYears(-int_PresentYearDifference).ToString(&quot;yyyy-MM-dd&quot;) + &quot;&amp;daily=temperature_2m_mean,precipitation_sum&amp;timezone=auto&quot;]" sap:VirtualizedContainerService.HintSize="479,103" sap2010:WorkflowViewState.IdRef="HttpClient_3" Method="GET" Result="[str_WeatherJson]" TimeoutMS="6000">
       <ui:HttpClient.Attachments>
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.Attachments>
@@ -195,6 +233,7 @@
       </ui:HttpClient.UrlSegments>
     </ui:HttpClient>
     <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="479,174" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_3" JsonObject="[jo_WeatherData]" JsonString="[str_WeatherJson]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="479,175" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[str_WeatherJson]" />
     <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,242" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
@@ -211,7 +250,7 @@
               <OutArgument x:TypeArguments="x:String">[out_AvgTemp]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[jo_WeatherData("daily")("temperature_2m_mean")(0).ToString + "°C"]</InArgument>
+              <InArgument x:TypeArguments="x:String">[Math.Round(jo_WeatherData("daily")("temperature_2m_mean").ToObject(Of List(Of Double))().Average(), 1).ToString]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
@@ -219,7 +258,7 @@
               <OutArgument x:TypeArguments="x:String">[out_RainChance]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[jo_WeatherData("daily")("precipitation_probability_max")(0).ToString + "%"]</InArgument>
+              <InArgument x:TypeArguments="x:String">[Math.Round((jo_WeatherData("daily")("precipitation_sum").ToObject(Of List(Of Double))().Where(Function(x) x &gt; 0.1).Count / jo_WeatherData("daily")("precipitation_sum").ToObject(Of List(Of Double))().Count) * 100, 0).ToString + "%"]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
@@ -227,7 +266,7 @@
               <OutArgument x:TypeArguments="x:String">[out_WeatherDescription]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">["The forecast for " + in_Destination + " shows an average temperature of " + out_AvgTemp + " with a rain probability of " + out_RainChance + "."]</InArgument>
+              <InArgument x:TypeArguments="x:String">["The forecast for " + in_Destination + " during " + in_CheckInDate + " - " + in_CheckOutDate + " shows an average temperature of " + out_AvgTemp + "°C with a rain probability of " + out_RainChance + "."]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
         </scg:List>

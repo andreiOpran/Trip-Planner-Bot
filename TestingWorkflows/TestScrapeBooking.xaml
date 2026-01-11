@@ -35,6 +35,7 @@
       <x:String>System.Reflection</x:String>
       <x:String>System.Activities.Runtime.Collections</x:String>
       <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.IntegrationService.Activities.SWEntities.CD1BA716876_v2_sub_chat_sub_completion_Create.Bundle</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -90,6 +91,7 @@
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>CD1BA716876_v2_sub_c.1Tbxw1Zo1BC1RKhCE3T8b752</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="TestScrapeBooking" sap:VirtualizedContainerService.HintSize="867,2313" sap2010:WorkflowViewState.IdRef="Sequence_1">
