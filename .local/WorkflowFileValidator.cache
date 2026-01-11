@@ -10,6 +10,8 @@ Workflows/WF_ValidateInput.xaml|639033868822011056
 SendEmail.xaml|639033868821972158
 InitConfig.xaml|639033868821948349
 TestScrapeBooking.xaml|639037275961911982
-TestingWorkflows/TestScrapeBooking.xaml|639037280422167671
+TestingWorkflows/TestScrapeBooking.xaml|639037313104289776
 Workflows/ScrapeBooking.xaml|639037279343717007
 Workflows/WF_ScrapeBooking.xaml|639037279343717007
+Workflows/WF_GetWeather.xaml|639037293031986362
+TestingWorkflows/TestGetWeather.xaml|639037312469776010
