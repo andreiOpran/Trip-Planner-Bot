@@ -1,3 +1,4 @@
-Workflows/WF_GetWeatherAI.xaml|639037340848625540
+Workflows/WF_GetWeatherAI.xaml|639037637627468321
 Workflows/WF_GetWeather.xaml|639037595992568381
 TestingWorkflows/TestGetWeather.xaml|639037589343706068
+TestingWorkflows/TestGetWeatherAI.xaml|639037623944224330
