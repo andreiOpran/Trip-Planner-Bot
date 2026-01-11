@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-16"?>
-<ObjectRepositoryTargetData ContentHash="Yk8Y_EMK-EWa4UMFvLWlPA" Reference="B_4lzU5DB0unScnNBHgJSw/7B1LoCChd0WLALUDHoEPCw" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ObjectRepositoryTargetData ContentHash="boySh9IVl0W-zMJImT4Wew" Reference="B_4lzU5DB0unScnNBHgJSw/7B1LoCChd0WLALUDHoEPCw" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <ObjectRepositoryTargetData.Data>
-    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="https://www.booking.com/searchresults.html?ss=Bra%C5%9Fov%2C+Romania&amp;efdco=1&amp;label=gen173nr-10CAEoggI46AdIM1gEaMABiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALg3f_KBsACAdICJDY3YWJkMDhiLTk4MDItNGIwYS04MTYzLTc4YjJlYWNmM2YwMNgCAeACAQ&amp;aid=304142&amp;lang=en-us&amp;sb=1&amp;src_elem=sb&amp;src=index&amp;dest_id=-1153613&amp;dest_type=city&amp;checkin=2026-01-08&amp;checkout=2026-02-03&amp;group_adults=2&amp;no_rooms=1&amp;group_children=0" ContentHash="PnKoDJO47UOBjYLQJgHsxg" DesignTimeRectangle="692, -43738, 816, 44368" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aria-role='list' tag='DIV' /&gt;" Guid="e004cda1-7fe3-4a68-b601-55914450c2ae" Reference="B_4lzU5DB0unScnNBHgJSw/7B1LoCChd0WLALUDHoEPCw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Booking.com: Hotels in Braşov. Book your hotel now!' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
-      <imageRef attrName="InformativeScreenshot" originalValue="7243b87f3a4edc281c54f540c8c262c8.png" xmlns="">0EEqGS6eV-U2clJdP2uf5nw</imageRef>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="https://www.booking.com/searchresults.html?ss=Bucharest%2C+Romania&amp;efdco=1&amp;label=gen173nr-10CAEoggI46AdIM1gEaMABiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALn9Y3LBsACAdICJDk4MDhiZjYzLTI4YWYtNDgxYS04ZGU1LWI1ODBiNTk5ZTk1N9gCAeACAQ&amp;aid=304142&amp;lang=en-us&amp;sb=1&amp;src_elem=sb&amp;src=index&amp;dest_id=-1153951&amp;dest_type=city&amp;checkin=2026-02-09&amp;checkout=2026-02-19&amp;group_adults=2&amp;no_rooms=1&amp;group_children=0" ContentHash="Yk8Y_EMK-EWa4UMFvLWlPA" DesignTimeRectangle="692, -22864, 816, 23347" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl aria-role='list' tag='DIV' /&gt;" Guid="52ef225f-25b7-4b7b-b4e3-c04db8eaf085" Reference="B_4lzU5DB0unScnNBHgJSw/7B1LoCChd0WLALUDHoEPCw" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Booking.com: Hotels in Bucharest. Book your hotel now!' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="159760688c8202a57991dc04e5f5b382.png" xmlns="">0NLOh3jX_kUazwLikPiJS0w</imageRef>
     </TargetAnchorable>
     <x:String x:Key="ActivityType">ExtractData</x:String>
     <p:InArgument x:TypeArguments="x:String" x:Key="ExtractDataSettings" xml:space="preserve">&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured' AddCvHeader='true' IsScrollEnabled='false'&gt;
@@ -27,7 +27,14 @@
 		&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;
 		&lt;Format xsi:type='TextColumnFormat' /&gt;
 	&lt;/Column&gt;
-	&lt;Column xsi:type='DataColumn' ReferenceName='Column3' Name='Price'&gt;
+	&lt;Column xsi:type='DataColumn' ReferenceName='Column4' Name='Price'&gt;
+		&lt;IsValidName&gt;true&lt;/IsValidName&gt;
+		&lt;ValidationErrorMessage /&gt;
+		&lt;IsExtra&gt;false&lt;/IsExtra&gt;
+		&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;
+		&lt;Format xsi:type='TextColumnFormat' /&gt;
+	&lt;/Column&gt;
+	&lt;Column xsi:type='DataColumn' ReferenceName='Column5' Name='PropertyType'&gt;
 		&lt;IsValidName&gt;true&lt;/IsValidName&gt;
 		&lt;ValidationErrorMessage /&gt;
 		&lt;IsExtra&gt;false&lt;/IsExtra&gt;
