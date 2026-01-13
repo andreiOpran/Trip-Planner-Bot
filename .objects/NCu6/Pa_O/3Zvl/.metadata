@@ -1,0 +1,16 @@
+﻿{
+  "Name": "Edge Tab",
+  "Type": "Screen",
+  "Id": "3ZvlJitlUEe2q_twsskKSA",
+  "Reference": "B_4lzU5DB0unScnNBHgJSw/3ZvlJitlUEe2q_twsskKSA",
+  "ParentRef": "B_4lzU5DB0unScnNBHgJSw/Pa_O5mbAykqTkgr4evhdsw",
+  "Created": "2026-01-12T23:31:51.4336343Z",
+  "Updated": "2026-01-12T23:40:39.4751261Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.24.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

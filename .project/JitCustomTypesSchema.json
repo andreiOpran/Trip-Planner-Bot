@@ -520,6 +520,106 @@
         "hash": "STgyM2NQWnhQSnNyYnJ0bWtaTzVZditBMys0dkM2MXkrak9hV2dlb1pFSEtUNklYR0ZINGlqM1pTSStCQ24wUTV1ME1seFdhRkt6a2hBdUVxWEdLUkE9PQ",
         "assemblyName": "CD1BA716876_v2_sub_c.1Tbxw1Zo1BC1RKhCE3T8b752"
       }
+    },
+    {
+      "providerName": "TypedDataTable",
+      "typedDataTableDto": {
+        "id": 2,
+        "idRef": "NExtractDataGeneric`1_2",
+        "hash": "NExtractDataGeneric`1_2|DataTable|TvTg7p5M8ehQMU4I7faFRU58PHZxsKoTQeL1tzCm0",
+        "dataType": "System.Data.DataTable, System.Data.Common",
+        "columns": [
+          {
+            "columnName": "Rezervare",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Box",
+            "dataType": "System.String, System.Private.CoreLib"
+          }
+        ]
+      },
+      "entityAssemblyKey": {
+        "name": "Studio.Generated.TypedDataTable2",
+        "hash": "NExtractDataGeneric`1_2|DataTable|CMkRtdt5B3apfSec7I8hOHQn9Alkx6cV7BQ6Y3kCk",
+        "assemblyName": "Studio.Generated.TypedDataTable2"
+      }
+    },
+    {
+      "providerName": "TypedDataTable",
+      "typedDataTableDto": {
+        "id": 1,
+        "idRef": "NExtractDataGeneric`1_1",
+        "hash": "NExtractDataGeneric`1_1|DataTable|EDVSVuwIzuGjzj6xIPbSOl88XbWv6gIbeFjldL2G64",
+        "dataType": "System.Data.DataTable, System.Data.Common",
+        "columns": [
+          {
+            "columnName": "Ora Plecare",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Ora Sosire",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Durata",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Companie",
+            "dataType": "System.String, System.Private.CoreLib"
+          }
+        ]
+      },
+      "entityAssemblyKey": {
+        "name": "Studio.Generated.TypedDataTable1",
+        "hash": "NExtractDataGeneric`1_1|DataTable|fRyAzSwqdNl2A8o1CH1Fh6L4P4oDemPjeFBRecebIQ",
+        "assemblyName": "Studio.Generated.TypedDataTable1"
+      }
+    },
+    {
+      "providerName": "TypedDataTable",
+      "typedDataTableDto": {
+        "id": 3,
+        "idRef": "NExtractDataGeneric`1_3",
+        "hash": "NExtractDataGeneric`1_3|DataTable|TvTg7p5M8ehQMU4I7faFRU58PHZxsKoTQeL1tzCm0",
+        "dataType": "System.Data.DataTable, System.Data.Common",
+        "columns": [
+          {
+            "columnName": "Rezervare",
+            "dataType": "System.String, System.Private.CoreLib"
+          },
+          {
+            "columnName": "Box",
+            "dataType": "System.String, System.Private.CoreLib"
+          }
+        ]
+      },
+      "entityAssemblyKey": {
+        "name": "Studio.Generated.TypedDataTable3",
+        "hash": "NExtractDataGeneric`1_3|DataTable|CMkRtdt5B3apfSec7I8hOHQn9Alkx6cV7BQ6Y3kCk",
+        "assemblyName": "Studio.Generated.TypedDataTable3"
+      }
+    },
+    {
+      "providerName": "TypedDataTable",
+      "typedDataTableDto": {
+        "id": 4,
+        "idRef": "NExtractDataGeneric`1_4",
+        "hash": "NExtractDataGeneric`1_4|DataTable|SMxNXVMe7oyS7y6eOFNXc7YHooR3nuKtiyaMfi0Sqo",
+        "dataType": "System.Data.DataTable, System.Data.Common",
+        "columns": [
+          {
+            "columnName": "Pret",
+            "dataType": "System.String, System.Private.CoreLib"
+          }
+        ]
+      },
+      "entityAssemblyKey": {
+        "name": "Studio.Generated.TypedDataTable4",
+        "hash": "NExtractDataGeneric`1_4|DataTable|5forUBqRKI2pYWlB4HzKewrky6oS4feYcBVNGJWng",
+        "assemblyName": "Studio.Generated.TypedDataTable4"
+      }
     }
   ]
 }

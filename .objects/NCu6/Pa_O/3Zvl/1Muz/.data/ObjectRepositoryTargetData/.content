@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="wyyMp2_raEGlMixGcvWA_g" Reference="B_4lzU5DB0unScnNBHgJSw/1MuzvA9gaEWZ0QNOQQPKzg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="https://mersultrenurilor.infofer.ro/ro-RO/Itineraries?DepartureStationName=Bucure%C8%99ti+Nord&amp;ArrivalStationName=General+Nicolae+D%C4%83sc%C4%83lescu&amp;DepartureDate=15.01.2026+0%3A00%3A00&amp;AreOnlyTrainsWithReservation=false&amp;ArrivalTrainRunningNumber=&amp;DepartureTrainRunningNumber=&amp;ConnectionsTypeId=1&amp;MinutesInDay=0&amp;OrderingTypeId=0&amp;TimeSelectionId=0&amp;ChangeStationName=&amp;BetweenTrainsMinimumMinutes=&amp;IsOnlineBuyingRequired=false&amp;IsBikesServiceRequired=false&amp;IsBarRestaurantServiceRequired=false&amp;IsSleeperCouchetteServiceRequired=false" DesignTimeRectangle="266, -552, 1387, 2317" ElementType="List" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl parentid='div-results' tag='UL' /&gt;" Guid="1f44fe9d-2d76-45f9-8a29-b072781eeb6a" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Rute trenuri - București Nord - General Nicolae Dăscălescu - Mersul trenurilor CFR' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="09f00ceb4bf65e34df132f7fa2f35596.png" xmlns="">0FE0DdUZoWE614FTaYXdkwQ</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">ExtractDataGeneric</x:String>
+    <x:Null x:Key="NextLinkTarget" />
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

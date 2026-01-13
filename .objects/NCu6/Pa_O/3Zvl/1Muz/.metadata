@@ -1,0 +1,17 @@
+﻿{
+  "Name": "Detalii Calatorie",
+  "Type": "Element",
+  "TaxonomyType": "Listbox",
+  "Id": "1MuzvA9gaEWZ0QNOQQPKzg",
+  "Reference": "B_4lzU5DB0unScnNBHgJSw/1MuzvA9gaEWZ0QNOQQPKzg",
+  "ParentRef": "B_4lzU5DB0unScnNBHgJSw/3ZvlJitlUEe2q_twsskKSA",
+  "Created": "2026-01-12T23:31:53.73836Z",
+  "Updated": "2026-01-12T23:39:50.7689229Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.24.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

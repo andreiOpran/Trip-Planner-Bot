@@ -1,0 +1,15 @@
+﻿{
+  "Name": "Edge Browser",
+  "Type": "App",
+  "Id": "NCu62Ctq5kWfhPd2dtyPVg",
+  "Reference": "B_4lzU5DB0unScnNBHgJSw/NCu62Ctq5kWfhPd2dtyPVg",
+  "Created": "2026-01-12T23:31:51.3590467Z",
+  "Updated": "2026-01-12T23:40:35.2348406Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.24.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "UpdatedBy": [
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
