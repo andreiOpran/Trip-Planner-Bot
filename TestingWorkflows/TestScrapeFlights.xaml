@@ -1,0 +1,231 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="TestScrapeFlights" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="TestScrapeFlights_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="TestScrapeFlights" sap:VirtualizedContainerService.HintSize="867,1500" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_FlightsResults" />
+      <Variable x:TypeArguments="x:String" Default="[&quot;Bucharest&quot;]" Name="testOrasPlecare" />
+      <Variable x:TypeArguments="x:String" Default="[&quot;Milan&quot;]" Name="testOrasDestinatie" />
+      <Variable x:TypeArguments="x:String" Default="[DateTime.Today.AddDays(30).ToString(&quot;dd/MM/yyyy&quot;)]" Name="testDataPlecare" />
+      <Variable x:TypeArguments="x:Double" Default="[500.0]" Name="testBudget" />
+      <Variable x:TypeArguments="x:Boolean" Name="bool_OutputFileExists" />
+      <Variable x:TypeArguments="x:String" Name="outputFileName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    
+    <!-- Log test parameters -->
+    <ui:LogMessage DisplayName="Log Message - Test Parameters" sap:VirtualizedContainerService.HintSize="524,179" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;=== TEST SCRAPE FLIGHTS ===&quot; &amp; vbCrLf &amp; &quot;Oras Plecare: &quot; &amp; testOrasPlecare &amp; vbCrLf &amp; &quot;Oras Destinatie: &quot; &amp; testOrasDestinatie &amp; vbCrLf &amp; &quot;Data Plecare: &quot; &amp; testDataPlecare &amp; vbCrLf &amp; &quot;Budget: &quot; &amp; testBudget.ToString]" />
+    
+    <!-- Try Catch pentru invocarea workflow-ului -->
+    <TryCatch DisplayName="Try Catch - Invoke ScrapeFlights" sap:VirtualizedContainerService.HintSize="524,739" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence DisplayName="Invoke and Process" sap:VirtualizedContainerService.HintSize="450,400" sap2010:WorkflowViewState.IdRef="Sequence_Invoke">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          
+          <!-- Invoke WF_ScrapeFlights.xaml -->
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow - WF_ScrapeFlights" sap:VirtualizedContainerService.HintSize="416,207" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\WF_ScrapeFlights.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_orasPlecare">[testOrasPlecare]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_orasDestinatie">[testOrasDestinatie]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_dataPlecare">[testDataPlecare]</InArgument>
+              <InArgument x:TypeArguments="x:Double" x:Key="in_Budget">[testBudget]</InArgument>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtZboruri">[dt_FlightsResults]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          
+          <!-- Log results count -->
+          <ui:LogMessage DisplayName="Log Message - Results Count" sap:VirtualizedContainerService.HintSize="416,179" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Scraping finalizat! Total zboruri gasite: &quot; &amp; If(dt_FlightsResults IsNot Nothing, dt_FlightsResults.Rows.Count.ToString, &quot;0&quot;)]" />
+          
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch_1">
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Handle Exception" sap:VirtualizedContainerService.HintSize="450,234" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message - Error" sap:VirtualizedContainerService.HintSize="416,170" sap2010:WorkflowViewState.IdRef="LogMessage_Error" Level="Error" Message="[&quot;Eroare la scraping zboruri: &quot; &amp; exception.Message &amp; vbCrLf &amp; exception.StackTrace]" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+      <TryCatch.Finally>
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </TryCatch.Finally>
+    </TryCatch>
+    
+    <!-- Verificare si salvare rezultate -->
+    <If Condition="[dt_FlightsResults IsNot Nothing AndAlso dt_FlightsResults.Rows.Count > 0]" DisplayName="If Results Exist" sap:VirtualizedContainerService.HintSize="524,800" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence DisplayName="Save Results to Excel" sap:VirtualizedContainerService.HintSize="486,600" sap2010:WorkflowViewState.IdRef="Sequence_SaveResults">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          
+          <!-- Generate output filename -->
+          <Assign DisplayName="Generate Output Filename" sap:VirtualizedContainerService.HintSize="452,174" sap2010:WorkflowViewState.IdRef="Assign_Filename">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[outputFileName]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[("FLIGHTS_RESULT_" &amp; testOrasPlecare &amp; "_" &amp; testOrasDestinatie &amp; "_" &amp; testDataPlecare &amp; ".xlsx").Replace("/", "-").Replace(":", "").Replace(" ", "_")]</InArgument>
+            </Assign.Value>
+          </Assign>
+          
+          <!-- Check if file exists -->
+          <ui:FileExistsX DisplayName="File Exists" Exists="[bool_OutputFileExists]" sap:VirtualizedContainerService.HintSize="452,171" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[outputFileName]" />
+          
+          <!-- Delete if exists -->
+          <If Condition="[bool_OutputFileExists]" DisplayName="If File Exists - Delete" sap:VirtualizedContainerService.HintSize="452,300" sap2010:WorkflowViewState.IdRef="If_2">
+            <If.Then>
+              <ui:DeleteFileX DisplayName="Delete Existing File" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[outputFileName]" />
+            </If.Then>
+            <If.Else>
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_Else">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Sequence>
+            </If.Else>
+          </If>
+          
+          <!-- Write to Excel -->
+          <ui:WriteRange StartingCell="{x:Null}" WorkbookPathResource="{x:Null}" DataTable="[dt_FlightsResults]" DisplayName="Write Range - Save Results" sap:VirtualizedContainerService.HintSize="452,143" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Flights" WorkbookPath="[outputFileName]" />
+          
+          <!-- Log success -->
+          <ui:LogMessage DisplayName="Log Message - File Saved" sap:VirtualizedContainerService.HintSize="452,179" sap2010:WorkflowViewState.IdRef="LogMessage_Saved" Level="Info" Message="[&quot;Rezultatele au fost salvate in: &quot; &amp; outputFileName]" />
+          
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="No Results" sap:VirtualizedContainerService.HintSize="486,200" sap2010:WorkflowViewState.IdRef="Sequence_NoResults">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message - No Results" sap:VirtualizedContainerService.HintSize="452,179" sap2010:WorkflowViewState.IdRef="LogMessage_NoResults" Level="Warn" Message="[&quot;Nu au fost gasite rezultate pentru zboruri.&quot;]" />
+        </Sequence>
+      </If.Else>
+    </If>
+    
+    <!-- Final log -->
+    <ui:LogMessage DisplayName="Log Message - Test Complete" sap:VirtualizedContainerService.HintSize="524,179" sap2010:WorkflowViewState.IdRef="LogMessage_Final" Level="Info" Message="[&quot;=== TEST SCRAPE FLIGHTS FINALIZAT ===&quot;]" />
+    
+  </Sequence>
+</Activity>
