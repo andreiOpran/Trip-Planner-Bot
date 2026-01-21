@@ -1,0 +1,49 @@
+{
+  "assemblyStates": {
+    "CD1BA716876_v2_sub_c.1Tbxw1Zo1BC1RKhCE3T8b752": {
+      "namespace": "UiPath.IntegrationService.Activities.SWEntities.CD1BA716876_v2_sub_chat_sub_completion_Create.Bundle",
+      "providerName": "CustomEntities",
+      "key": {
+        "name": "UiPath.IntegrationService.Activities.SWEntities.CD1BA716876_v2_sub_chat_sub_completion_Create",
+        "hash": "STgyM2NQWnhQSnNyYnJ0bWtaTzVZditBMys0dkM2MXkrak9hV2dlb1pFSEtUNklYR0ZINGlqM1pTSStCQ24wUTV1ME1seFdhRkt6a2hBdUVxWEdLUkE9PQ",
+        "assemblyName": "CD1BA716876_v2_sub_c.1Tbxw1Zo1BC1RKhCE3T8b752"
+      }
+    },
+    "Studio.Generated.TypedDataTable2": {
+      "namespace": "System.Data",
+      "providerName": "TypedDataTable",
+      "key": {
+        "name": "Studio.Generated.TypedDataTable2",
+        "hash": "NExtractDataGeneric\u00601_2|DataTable|TvTg7p5M8ehQMU4I7faFRU58PHZxsKoTQeL1tzCm0",
+        "assemblyName": "Studio.Generated.TypedDataTable2"
+      }
+    },
+    "Studio.Generated.TypedDataTable1": {
+      "namespace": "System.Data",
+      "providerName": "TypedDataTable",
+      "key": {
+        "name": "Studio.Generated.TypedDataTable1",
+        "hash": "NExtractDataGeneric\u00601_1|DataTable|EDVSVuwIzuGjzj6xIPbSOl88XbWv6gIbeFjldL2G64",
+        "assemblyName": "Studio.Generated.TypedDataTable1"
+      }
+    },
+    "Studio.Generated.TypedDataTable3": {
+      "namespace": "System.Data",
+      "providerName": "TypedDataTable",
+      "key": {
+        "name": "Studio.Generated.TypedDataTable3",
+        "hash": "NExtractDataGeneric\u00601_3|DataTable|TvTg7p5M8ehQMU4I7faFRU58PHZxsKoTQeL1tzCm0",
+        "assemblyName": "Studio.Generated.TypedDataTable3"
+      }
+    },
+    "Studio.Generated.TypedDataTable4": {
+      "namespace": "System.Data",
+      "providerName": "TypedDataTable",
+      "key": {
+        "name": "Studio.Generated.TypedDataTable4",
+        "hash": "NExtractDataGeneric\u00601_4|DataTable|SMxNXVMe7oyS7y6eOFNXc7YHooR3nuKtiyaMfi0Sqo",
+        "assemblyName": "Studio.Generated.TypedDataTable4"
+      }
+    }
+  }
+}
