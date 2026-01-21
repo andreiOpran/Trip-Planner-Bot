@@ -144,7 +144,7 @@
       <x:Boolean x:Key="ShouldExpandAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Get_Weather" sap:VirtualizedContainerService.HintSize="912,2954" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Get_Weather" sap:VirtualizedContainerService.HintSize="686.8000000000001,3479.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_GeoJson" />
       <Variable x:TypeArguments="njl:JObject" Name="jo_GeoData" />
@@ -165,7 +165,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request - get coordinates" EnableSSLVerification="True" EndPoint="[&quot;https://geocoding-api.open-meteo.com/v1/search?name=&quot; + in_Destination + &quot;&amp;count=1&amp;language=en&amp;format=json&quot;]" sap:VirtualizedContainerService.HintSize="479,103" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="GET" Result="[str_GeoJson]" TimeoutMS="6000">
+    <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request - get coordinates" EnableSSLVerification="True" EndPoint="[&quot;https://geocoding-api.open-meteo.com/v1/search?name=&quot; + in_Destination + &quot;&amp;count=1&amp;language=en&amp;format=json&quot;]" sap:VirtualizedContainerService.HintSize="479.2,103.2" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="GET" Result="[str_GeoJson]" TimeoutMS="6000">
       <ui:HttpClient.Attachments>
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.Attachments>
@@ -182,8 +182,8 @@
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.UrlSegments>
     </ui:HttpClient>
-    <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="479,174" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_2" JsonObject="[jo_GeoData]" JsonString="[str_GeoJson]" />
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,273" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="479.2,173.6" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_2" JsonObject="[jo_GeoData]" JsonString="[str_GeoJson]" />
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479.2,274.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -229,7 +229,7 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request get weather" EnableSSLVerification="True" EndPoint="[&quot;https://archive-api.open-meteo.com/v1/archive?latitude=&quot; + str_Latitude + &quot;&amp;longitude=&quot; + str_Longitude + &quot;&amp;start_date=&quot; + CheckInDate.AddYears(-int_PresentYearDifference).ToString(&quot;yyyy-MM-dd&quot;) + &quot;&amp;end_date=&quot; + CheckOutDate.AddYears(-int_PresentYearDifference).ToString(&quot;yyyy-MM-dd&quot;) + &quot;&amp;daily=temperature_2m_mean,precipitation_sum&amp;timezone=auto&quot;]" sap:VirtualizedContainerService.HintSize="479,103" sap2010:WorkflowViewState.IdRef="HttpClient_3" Method="GET" Result="[str_WeatherJson]" TimeoutMS="6000">
+    <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request get weather" EnableSSLVerification="True" EndPoint="[&quot;https://archive-api.open-meteo.com/v1/archive?latitude=&quot; + str_Latitude + &quot;&amp;longitude=&quot; + str_Longitude + &quot;&amp;start_date=&quot; + CheckInDate.AddYears(-int_PresentYearDifference).ToString(&quot;yyyy-MM-dd&quot;) + &quot;&amp;end_date=&quot; + CheckOutDate.AddYears(-int_PresentYearDifference).ToString(&quot;yyyy-MM-dd&quot;) + &quot;&amp;daily=temperature_2m_mean,precipitation_sum&amp;timezone=auto&quot;]" sap:VirtualizedContainerService.HintSize="479.2,103.2" sap2010:WorkflowViewState.IdRef="HttpClient_3" Method="GET" Result="[str_WeatherJson]" TimeoutMS="6000">
       <ui:HttpClient.Attachments>
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.Attachments>
@@ -246,9 +246,9 @@
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.UrlSegments>
     </ui:HttpClient>
-    <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="479,174" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_3" JsonObject="[jo_WeatherData]" JsonString="[str_WeatherJson]" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="479,175" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[str_WeatherJson]" />
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,242" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+    <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="479.2,173.6" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_3" JsonObject="[jo_WeatherData]" JsonString="[str_WeatherJson]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="479.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[str_WeatherJson]" />
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479.2,242.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
@@ -286,15 +286,18 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <TryCatch DisplayName="Try Catch - AI" sap:VirtualizedContainerService.HintSize="452,1836" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch - AI" sap:VirtualizedContainerService.HintSize="479.2,2044.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="450,1183" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="449.6,1360" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="cheie_AI" />
+          </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign sap:VirtualizedContainerService.HintSize="416,179" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[str_Prompt]</OutArgument>
             </Assign.To>
@@ -310,15 +313,20 @@ Constraints:
 3. Keep it concise (max 50 words)."]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign sap:VirtualizedContainerService.HintSize="416,179" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="cheieAI" CacheStrategy="None" DisplayName="Get Asset" sap:VirtualizedContainerService.HintSize="416,184" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+            <ui:GetRobotAsset.Value>
+              <OutArgument x:TypeArguments="x:String">[cheie_AI]</OutArgument>
+            </ui:GetRobotAsset.Value>
+          </ui:GetRobotAsset>
+          <Assign sap:VirtualizedContainerService.HintSize="416,178.4" sap2010:WorkflowViewState.IdRef="Assign_3">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[str_APIKey_Gemini]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">["TODO: get from Orchestrator"]</InArgument>
+              <InArgument x:TypeArguments="x:String">[cheie_AI]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" Body="[&quot;{&quot;&quot;contents&quot;&quot;: [{&quot;&quot;parts&quot;&quot;: [{&quot;&quot;text&quot;&quot;: &quot;&quot;&quot; + str_Prompt.Replace(&quot;&quot;&quot;&quot;, &quot;\&quot;&quot;&quot;).Replace(vbCrLf, &quot;\n&quot;) + &quot;&quot;&quot;}]}]}&quot;]" BodyFormat="application/json" DisplayName="HTTP Request - AI" EnableSSLVerification="True" EndPoint="[&quot;https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=&quot; + str_APIKey_Gemini]" sap:VirtualizedContainerService.HintSize="416,107" sap2010:WorkflowViewState.IdRef="HttpClient_4" Method="POST" Result="[str_GeminiResponse]" TimeoutMS="6000">
+          <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" Body="[&quot;{&quot;&quot;contents&quot;&quot;: [{&quot;&quot;parts&quot;&quot;: [{&quot;&quot;text&quot;&quot;: &quot;&quot;&quot; + str_Prompt.Replace(&quot;&quot;&quot;&quot;, &quot;\&quot;&quot;&quot;).Replace(vbCrLf, &quot;\n&quot;) + &quot;&quot;&quot;}]}]}&quot;]" BodyFormat="application/json" DisplayName="HTTP Request - AI" EnableSSLVerification="True" EndPoint="[&quot;https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=&quot; + str_APIKey_Gemini]" sap:VirtualizedContainerService.HintSize="416,107.2" sap2010:WorkflowViewState.IdRef="HttpClient_4" Method="POST" Result="[str_GeminiResponse]" TimeoutMS="6000">
             <ui:HttpClient.Attachments>
               <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
             </ui:HttpClient.Attachments>
@@ -335,10 +343,10 @@ Constraints:
               <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
             </ui:HttpClient.UrlSegments>
           </ui:HttpClient>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,179" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[str_GeminiResponse]" />
-          <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="416,127" sap2010:WorkflowViewState.IdRef="Delay_1" />
-          <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="416,178" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_4" JsonObject="[jo_Gemini]" JsonString="[str_GeminiResponse]" />
-          <Assign sap:VirtualizedContainerService.HintSize="416,170" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[str_GeminiResponse]" />
+          <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="416,126.4" sap2010:WorkflowViewState.IdRef="Delay_1" />
+          <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="416,177.6" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_4" JsonObject="[jo_Gemini]" JsonString="[str_GeminiResponse]" />
+          <Assign sap:VirtualizedContainerService.HintSize="416,169.6" sap2010:WorkflowViewState.IdRef="Assign_2">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[out_WeatherDescriptionAI]</OutArgument>
             </Assign.To>

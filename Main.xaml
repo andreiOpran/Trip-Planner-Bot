@@ -114,7 +114,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="936.4000000000001,4881.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="932.4000000000001,6203.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_RezultateZboruri" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_RezultateTrenuri" />
@@ -134,14 +134,6 @@
       <Variable x:TypeArguments="scg:List(x:String)" Name="TestingBookingInputSheets" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_BookingFinalResults" />
       <Variable x:TypeArguments="sd:DataTable" Name="out_BookingFinalResults" />
-      <Variable x:TypeArguments="x:String" Name="outtripid">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:String x:Key="SourceIdRef">InvokeWorkflowFile_41</x:String>
-            <x:String x:Key="SourcePropertyName">out_TripId</x:String>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </Variable>
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -183,15 +175,18 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_OutputPath">[outp]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_ValidTrips]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="555.2,3298.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_ValidTrips]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="555.2,4620" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="553.6,3116.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="553.6,4438.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dt_TempWeather" />
+              <Variable x:TypeArguments="x:String" Name="descriereai" />
+              <Variable x:TypeArguments="x:String" Name="outtripid" />
+              <Variable x:TypeArguments="x:String" Name="altadescriere" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -199,72 +194,139 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="520,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[String.Join(&quot;, &quot;, CurrentRow.ItemArray)]" />
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WF_GetWeather - Invoke Workflow File (Workflows\WF_GetWeather.xaml)" sap:VirtualizedContainerService.HintSize="520,180.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_41" UnSafe="False" WorkflowFileName="Workflows\WF_GetWeather.xaml">
-              <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_CheckOutDate">[DateTime.ParseExact(CurrentRow("ReturnDate").ToString.Trim, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("d MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_CheckInDate">[DateTime.ParseExact(CurrentRow("DepartureDate").ToString.Trim, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("d MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="out_TripId">[outtripid]</OutArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_TripId">[CurrentRow("TripId").ToString]</InArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="out_WeatherDescription">[vreme_Descriere]</OutArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="out_RainChance">[vreme_SansaPloaie]</OutArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="out_AvgTemp">[vreme_TempMedie]</OutArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_Destination">[CurrentRow("Destination").ToString]</InArgument>
-              </ui:InvokeWorkflowFile.Arguments>
-            </ui:InvokeWorkflowFile>
-            <ui:BuildDataTable DataTable="[dt_TempWeather]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="520,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;TripId&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;AvgTemperature&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;RainChance&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;WeatherDescription&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
-            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{CurrentRow(&quot;TripId&quot;).ToString, vreme_TempMedie, vreme_SansaPloaie, vreme_Descriere}]" DataTable="[dt_TempWeather]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="520,220" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-            <ui:AppendRange WorkbookPathResource="{x:Null}" DataTable="[dt_TempWeather]" DisplayName="Append Range Workbook" sap:VirtualizedContainerService.HintSize="520,152" sap2010:WorkflowViewState.IdRef="AppendRange_4" SheetName="Weather" WorkbookPath="[outp]" />
-            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="520,1442.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
-              <TryCatch.Try>
-                <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="518.4,941.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="520,346.4" sap2010:WorkflowViewState.IdRef="CommentOut_18">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,232" sap2010:WorkflowViewState.IdRef="Sequence_25">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WF_ScrapeBooking - Invoke Workflow File (Workflows\WF_ScrapeBooking.xaml)" sap:VirtualizedContainerService.HintSize="484.8,180.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_51" UnSafe="False" WorkflowFileName="Workflows\WF_ScrapeBooking.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WF_GetWeatherAI - Invoke Workflow File (Workflows\WF_GetWeatherAI.xaml)" sap:VirtualizedContainerService.HintSize="416,172" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_54" UnSafe="False" WorkflowFileName="Workflows\WF_GetWeatherAI.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_BookingFinalResults">[dt_BookingResults]</OutArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_TripId">[CurrentRow("TripId").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="in_Budget">[CInt(CurrentRow("TotalBudget"))]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_PropertyType">[CurrentRow("AccommodationType").ToString]</InArgument>
-                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_ConfigDict">[GlobalConfig]</InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="in_Guests">[CInt(CurrentRow("Passengers"))]</InArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_WeatherDescriptionAI">[vreme_Descriere]</OutArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_CheckOutDate">[DateTime.ParseExact(CurrentRow("ReturnDate").ToString.Trim, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("d MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_CheckInDate">[DateTime.ParseExact(CurrentRow("DepartureDate").ToString.Trim, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("d MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_TripId">[outtripid]</OutArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_TripId">[CurrentRow("TripId").ToString]</InArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_WeatherDescription">[altadescriere]</OutArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_RainChance">[vreme_SansaPloaie]</OutArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="out_AvgTemp">[vreme_TempMedie]</OutArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_Destination">[CurrentRow("Destination").ToString]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484.8,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Hoteluri gasite: &quot; + dt_BookingResults.Rows.Count.ToString]" />
-                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484.8,342.4" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="520,257.6" sap2010:WorkflowViewState.IdRef="CommentOut_21">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,143.2" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:BuildDataTable DataTable="[dt_TempWeather]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="416,83.2" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;TripId&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;AvgTemperature&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;RainChance&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;WeatherDescription&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="520,385.6" sap2010:WorkflowViewState.IdRef="CommentOut_20">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,271.2" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{CurrentRow(&quot;TripId&quot;).ToString, vreme_TempMedie, vreme_SansaPloaie, vreme_Descriere}]" DataTable="[dt_TempWeather]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="416,211.2" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="520,313.6" sap2010:WorkflowViewState.IdRef="CommentOut_19">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,199.2" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:AppendRange WorkbookPathResource="{x:Null}" DataTable="[dt_TempWeather]" DisplayName="Append Range Workbook" sap:VirtualizedContainerService.HintSize="416,139.2" sap2010:WorkflowViewState.IdRef="AppendRange_4" SheetName="Weather" WorkbookPath="[outp]" />
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="520,1782.4" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+              <TryCatch.Try>
+                <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="518.4,1272.8" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484.8,346.4" sap2010:WorkflowViewState.IdRef="CommentOut_14">
                     <ui:CommentOut.Body>
-                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,232" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,232" sap2010:WorkflowViewState.IdRef="Sequence_29">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WF_ScrapeTrains - Invoke Workflow File (Workflows\WF_ScrapeTrains.xaml)" sap:VirtualizedContainerService.HintSize="416,172" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_45" UnSafe="False" WorkflowFileName="Workflows\WF_ScrapeTrains.xaml">
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WF_ScrapeBooking - Invoke Workflow File (Workflows\WF_ScrapeBooking.xaml)" sap:VirtualizedContainerService.HintSize="416,172" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_51" UnSafe="False" WorkflowFileName="Workflows\WF_ScrapeBooking.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtTrenuri">[dt_RezultateTrenuri]</OutArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_dataPlecare">[DateTime.ParseExact(CurrentRow("DepartureDate").ToString.Trim, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("d MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_orasPlecare">[CurrentRow("DepartureCity").ToString]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_orasDestinatie">[CurrentRow("Destination").ToString]</InArgument>
+                            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_BookingFinalResults">[dt_BookingResults]</OutArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_TripId">[CurrentRow("TripId").ToString]</InArgument>
+                            <InArgument x:TypeArguments="x:Int32" x:Key="in_Budget">[CInt(CurrentRow("TotalBudget"))]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_PropertyType">[CurrentRow("AccommodationType").ToString]</InArgument>
+                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_ConfigDict">[GlobalConfig]</InArgument>
+                            <InArgument x:TypeArguments="x:Int32" x:Key="in_Guests">[CInt(CurrentRow("Passengers"))]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_CheckOutDate">[DateTime.ParseExact(CurrentRow("ReturnDate").ToString.Trim, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("d MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_CheckInDate">[DateTime.ParseExact(CurrentRow("DepartureDate").ToString.Trim, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("d MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_Destination">[CurrentRow("Destination").ToString]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                       </Sequence>
                     </ui:CommentOut.Body>
                   </ui:CommentOut>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WF_ScrapeFlights - Invoke Workflow File (Workflows\WF_ScrapeFlights.xaml)" sap:VirtualizedContainerService.HintSize="484.8,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_52" UnSafe="False" WorkflowFileName="Workflows\WF_ScrapeFlights.xaml">
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484.8,340" sap2010:WorkflowViewState.IdRef="CommentOut_15">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,225.6" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Hoteluri gasite: &quot; + dt_BookingResults.Rows.Count.ToString]" />
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                  </ui:CommentOut>
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WF_ScrapeTrains - Invoke Workflow File (Workflows\WF_ScrapeTrains.xaml)" sap:VirtualizedContainerService.HintSize="484.8,184.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_55" UnSafe="False" WorkflowFileName="Workflows\WF_ScrapeTrains.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_TripId">[CurrentRow("TripId").ToString]</InArgument>
-                      <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtZboruri">[dt_RezultateZboruri]</OutArgument>
+                      <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtTrenuri">[dt_RezultateTrenuri]</OutArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_dataPlecare">[DateTime.ParseExact(CurrentRow("DepartureDate").ToString.Trim, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("d MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_orasPlecare">[CurrentRow("DepartureCity").ToString]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_orasDestinatie">[CurrentRow("Destination").ToString]</InArgument>
-                      <InArgument x:TypeArguments="x:Double" x:Key="in_Budget">[CInt(CurrentRow("TotalBudget"))]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484.8,337.6" sap2010:WorkflowViewState.IdRef="CommentOut_16">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,232" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="WF_ScrapeFlights - Invoke Workflow File (Workflows\WF_ScrapeFlights.xaml)" sap:VirtualizedContainerService.HintSize="416,172" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_52" UnSafe="False" WorkflowFileName="Workflows\WF_ScrapeFlights.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_TripId">[CurrentRow("TripId").ToString]</InArgument>
+                            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtZboruri">[dt_RezultateZboruri]</OutArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_dataPlecare">[DateTime.ParseExact(CurrentRow("DepartureDate").ToString.Trim, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("d MMMM yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_orasPlecare">[CurrentRow("DepartureCity").ToString]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_orasDestinatie">[CurrentRow("Destination").ToString]</InArgument>
+                            <InArgument x:TypeArguments="x:Double" x:Key="in_Budget">[CInt(CurrentRow("TotalBudget"))]</InArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                        </ui:InvokeWorkflowFile>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                  </ui:CommentOut>
                 </Sequence>
               </TryCatch.Try>
               <TryCatch.Catches>
@@ -285,7 +347,7 @@
                 </Catch>
               </TryCatch.Catches>
               <TryCatch.Finally>
-                <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="518.4,89.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="518.4,94.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -294,21 +356,43 @@
                 </Sequence>
               </TryCatch.Finally>
             </TryCatch>
-            <ui:AppendRange WorkbookPathResource="{x:Null}" DataTable="[dt_RezultateZboruri]" DisplayName="Append Range Workbook" sap:VirtualizedContainerService.HintSize="520,152" sap2010:WorkflowViewState.IdRef="AppendRange_6" SheetName="Transport" WorkbookPath="[outp]" />
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="520,313.6" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="520,313.6" sap2010:WorkflowViewState.IdRef="CommentOut_11">
               <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,199.2" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,199.2" sap2010:WorkflowViewState.IdRef="Sequence_21">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:AppendRange WorkbookPathResource="{x:Null}" DataTable="[dt_RezultateTrenuri]" DisplayName="Append Range Workbook" sap:VirtualizedContainerService.HintSize="416,139.2" sap2010:WorkflowViewState.IdRef="AppendRange_7" SheetName="Transport" WorkbookPath="[outp]" />
+                  <ui:AppendRange WorkbookPathResource="{x:Null}" DataTable="[dt_RezultateZboruri]" DisplayName="Append Range Workbook" sap:VirtualizedContainerService.HintSize="416,139.2" sap2010:WorkflowViewState.IdRef="AppendRange_6" SheetName="Transport" WorkbookPath="[outp]" />
                 </Sequence>
               </ui:CommentOut.Body>
             </ui:CommentOut>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="520,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[&quot;Se vor scrie in excel: &quot; + dt_BookingResults.Rows.Count.ToString]" />
-            <ui:AppendRange WorkbookPathResource="{x:Null}" DataTable="[dt_BookingResults]" DisplayName="Append Range Workbook" sap:VirtualizedContainerService.HintSize="520,143.2" sap2010:WorkflowViewState.IdRef="AppendRange_5" SheetName="Accommodation" WorkbookPath="[outp]" />
+            <ui:AppendRange WorkbookPathResource="{x:Null}" DataTable="[dt_RezultateTrenuri]" DisplayName="Append Range Workbook" sap:VirtualizedContainerService.HintSize="520,152" sap2010:WorkflowViewState.IdRef="AppendRange_8" SheetName="Transport" WorkbookPath="[outp]" />
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="520,340" sap2010:WorkflowViewState.IdRef="CommentOut_13">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,225.6" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[&quot;Se vor scrie in excel: &quot; + dt_BookingResults.Rows.Count.ToString]" />
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="520,304.8" sap2010:WorkflowViewState.IdRef="CommentOut_12">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,199.2" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:AppendRange WorkbookPathResource="{x:Null}" DataTable="[dt_BookingResults]" DisplayName="Append Range Workbook" sap:VirtualizedContainerService.HintSize="416,139.2" sap2010:WorkflowViewState.IdRef="AppendRange_5" SheetName="Accommodation" WorkbookPath="[outp]" />
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
           </Sequence>
         </ActivityAction>
       </ui:ForEachRow.Body>

@@ -1,5 +1,5 @@
 Workflows/WF_ComputeBudgets.xaml|639041535877470643
-Workflows/WF_PrepareOutput.xaml|639041535877490662
+Workflows/WF_PrepareOutput.xaml|639046261701305626
 Workflows/WF_ReadInput.xaml|639041535877500638
 Workflows/WF_WriteValidTripsToSummary.xaml|639041535877520633
 InitConfig.xaml|639026850041937223
@@ -7,6 +7,8 @@ SendEmail.xaml|639046227157768501
 Workflows/WF_ScoreSummary.xaml|639046226928945134
 Workflows/WF_ValidateInput.xaml|639041535877520633
 Workflows/WF_GetWeather.xaml|639041535877480649
-Main.xaml|639046219974183825
+Main.xaml|639046263773357462
 Workflows/WF_ScrapeFlights.xaml|639046181269770465
-Workflows/WF_ScrapeBooking.xaml|639046221747214448
+Workflows/WF_ScrapeBooking.xaml|639046248889799019
+Workflows/WF_GetWeatherAI.xaml|639046257130685165
+Workflows/WF_ScrapeTrains.xaml|639046264908881208

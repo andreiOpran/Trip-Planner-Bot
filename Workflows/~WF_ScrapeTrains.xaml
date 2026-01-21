@@ -157,9 +157,10 @@
       <AssemblyReference>Studio.Generated.TypedDataTable5</AssemblyReference>
       <AssemblyReference>Studio.Generated.TypedDataTable6</AssemblyReference>
       <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>GlobalVariablesT1PNoYwrqg</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="scrape_trains" sap:VirtualizedContainerService.HintSize="677,10450" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="scrape_trains" sap:VirtualizedContainerService.HintSize="1150,10494" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:DateTime" Default="[DateTime.Today.AddMonths(1)]" Name="dataMaximaPermisa" />
       <Variable x:TypeArguments="x:Double" Name="totalPret" />
@@ -178,7 +179,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap:VirtualizedContainerService.HintSize="626,10427" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap:VirtualizedContainerService.HintSize="626,10471" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Default="https://mersultrenurilor.infofer.ro*" Name="URLrute" />
       </Sequence.Variables>
@@ -241,15 +242,15 @@
           <InArgument x:TypeArguments="x:Int32">[dataPlecare.Year]</InArgument>
         </Assign.Value>
       </Assign>
-      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="592,9298" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="592,9342" sap2010:WorkflowViewState.IdRef="TryCatch_1">
         <TryCatch.Try>
-          <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Private: Open Browser" sap:VirtualizedContainerService.HintSize="590,8653" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Private="True" Url="[URLtrenuri]">
+          <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Private: Open Browser" sap:VirtualizedContainerService.HintSize="590,8697" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Private="True" Url="[URLtrenuri]">
             <ui:OpenBrowser.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                 </ActivityAction.Argument>
-                <Sequence sap:VirtualizedContainerService.HintSize="556,8527" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                <Sequence sap:VirtualizedContainerService.HintSize="556,8531" sap2010:WorkflowViewState.IdRef="Sequence_11">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Boolean" Name="statieInexistenta" />
                     <Variable x:TypeArguments="x:Boolean" Name="trenuriGasite" />
@@ -260,13 +261,13 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="522,2058" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="522,2060" sap2010:WorkflowViewState.IdRef="Sequence_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBetweenKeys="300" DisplayName="Type Into 'INPUT  input-station-de...'" sap:VirtualizedContainerService.HintSize="451.2,196" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[in_orasPlecare+ &quot;[k(down)][k(enter)]&quot;]">
+                    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBetweenKeys="300" DisplayName="Type Into 'INPUT  input-station-de...'" sap:VirtualizedContainerService.HintSize="452,196" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[in_orasPlecare+ &quot;[k(down)][k(enter)]&quot;]">
                       <ui:TypeInto.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="42d018f1-03d8-4b79-92b7-fb3a1de3a2cb" InformativeScreenshot="59f26da15872426ca37877785bb2f663" Selector="&lt;webctrl id='input-station-departure-name' tag='INPUT' /&gt;">
                           <ui:Target.TimeoutMS>
@@ -278,7 +279,7 @@
                         </ui:Target>
                       </ui:TypeInto.Target>
                     </ui:TypeInto>
-                    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBetweenKeys="300" DisplayName="Type Into 'INPUT  input-station-ar...'" sap:VirtualizedContainerService.HintSize="451.2,196" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[in_orasDestinatie+ &quot;[k(down)][k(enter)]&quot;]">
+                    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBetweenKeys="300" DisplayName="Type Into 'INPUT  input-station-ar...'" sap:VirtualizedContainerService.HintSize="452,196" sap2010:WorkflowViewState.IdRef="TypeInto_3" Text="[in_orasDestinatie+ &quot;[k(down)][k(enter)]&quot;]">
                       <ui:TypeInto.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0a5b9783-3eda-4c89-bcb6-a9967e142083" InformativeScreenshot="bc736f04620e7489dc33c845c82ca2e9" Selector="&lt;webctrl id='input-station-arrival-name' tag='INPUT' /&gt;">
                           <ui:Target.TimeoutMS>
@@ -290,7 +291,7 @@
                         </ui:Target>
                       </ui:TypeInto.Target>
                     </ui:TypeInto>
-                    <ui:UiElementExists DisplayName="Element Exists 'grouping'" Exists="[statieInexistenta]" sap:VirtualizedContainerService.HintSize="451.2,143.2" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
+                    <ui:UiElementExists DisplayName="Element Exists 'grouping'" Exists="[statieInexistenta]" sap:VirtualizedContainerService.HintSize="452,143" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
                       <ui:UiElementExists.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9133d97a-b8cd-4ce6-9efb-c5aa6d44cddd" InformativeScreenshot="df36fc2f56e8f53d29cad8382ed3652c" Selector="&lt;webctrl tag='SPAN' innertext='Nu a fost găsită nicio stație cu acest nume!' /&gt;" TimeoutMS="500">
                           <ui:Target.WaitForReady>
@@ -299,7 +300,7 @@
                         </ui:Target>
                       </ui:UiElementExists.Target>
                     </ui:UiElementExists>
-                    <If Condition="[statieInexistenta]" sap:VirtualizedContainerService.HintSize="451.2,348.8" sap2010:WorkflowViewState.IdRef="If_7">
+                    <If Condition="[statieInexistenta]" sap:VirtualizedContainerService.HintSize="452,350" sap2010:WorkflowViewState.IdRef="If_7">
                       <If.Then>
                         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,181.6" sap2010:WorkflowViewState.IdRef="Sequence_47">
                           <sap:WorkflowViewStateService.ViewState>
@@ -307,7 +308,7 @@
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="416,117.6" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_4" Reason="Statia nu a fost gasita" />
+                          <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="416,118" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_4" Reason="Statia nu a fost gasita" />
                         </Sequence>
                       </If.Then>
                       <If.Else>
@@ -358,9 +359,9 @@
                         <OutArgument x:TypeArguments="x:String">[lunaAfisata]</OutArgument>
                       </ui:GetValue.Value>
                     </ui:GetValue>
-                    <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[Not lunaAfisata.ToLower.Contains(dataPlecare.ToString(&quot;MMMM&quot;, New System.Globalization.CultureInfo(&quot;ro-RO&quot;)))]" DisplayName="While" sap:VirtualizedContainerService.HintSize="451.2,476" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+                    <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[Not lunaAfisata.ToLower.Contains(dataPlecare.ToString(&quot;MMMM&quot;, New System.Globalization.CultureInfo(&quot;ro-RO&quot;)))]" DisplayName="While" sap:VirtualizedContainerService.HintSize="452,476" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
                       <ui:InterruptibleWhile.Body>
-                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="449.6,341.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,341" sap2010:WorkflowViewState.IdRef="Sequence_4">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -388,7 +389,7 @@
                               </ui:Target>
                             </ui:Click.Target>
                           </ui:Click>
-                          <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'DIV'" sap:VirtualizedContainerService.HintSize="416,134.4" sap2010:WorkflowViewState.IdRef="GetValue_2">
+                          <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'DIV'" sap:VirtualizedContainerService.HintSize="416,134" sap2010:WorkflowViewState.IdRef="GetValue_2">
                             <ui:GetValue.Target>
                               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4b22c582-c320-4eed-abe8-d0aee73292e7" InformativeScreenshot="dda1e1f7ec08a397fc41c3f1b8605b6c" Selector="&lt;webctrl class='ui-datepicker-title' parentid='ui-datepicker-div' tag='DIV' /&gt;">
                                 <ui:Target.TimeoutMS>
@@ -406,7 +407,7 @@
                         </Sequence>
                       </ui:InterruptibleWhile.Body>
                     </ui:InterruptibleWhile>
-                    <Assign sap:VirtualizedContainerService.HintSize="451.2,178.4" sap2010:WorkflowViewState.IdRef="Assign_9">
+                    <Assign sap:VirtualizedContainerService.HintSize="452,179" sap2010:WorkflowViewState.IdRef="Assign_9">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[ziPlecareStr]</OutArgument>
                       </Assign.To>
@@ -468,7 +469,7 @@
                       </ui:Target>
                     </ui:UiElementExists.Target>
                   </ui:UiElementExists>
-                  <If Condition="[trenuriGasite]" sap:VirtualizedContainerService.HintSize="521.6,348.8" sap2010:WorkflowViewState.IdRef="If_4">
+                  <If Condition="[trenuriGasite]" sap:VirtualizedContainerService.HintSize="522,350" sap2010:WorkflowViewState.IdRef="If_4">
                     <If.Then>
                       <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,24.8" sap2010:WorkflowViewState.IdRef="Sequence_41">
                         <sap:WorkflowViewStateService.ViewState>
@@ -486,11 +487,11 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="416,117.6" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_2" Reason="Nu a fost gasit niciun tren pe aceasta ruta" />
+                        <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="416,118" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_2" Reason="Nu a fost gasit niciun tren pe aceasta ruta" />
                       </Sequence>
                     </If.Else>
                   </If>
-                  <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Edge Rute trenuri(1)" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="521.6,5718.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_8" InteractionMode="DebuggerApi" ScopeGuid="25115f55-a4b8-4039-96c1-46d0f6bcaf62" Version="V2">
+                  <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Edge Rute trenuri(1)" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="522,5719" sap2010:WorkflowViewState.IdRef="NApplicationCard_8" InteractionMode="Simulate" ScopeGuid="25115f55-a4b8-4039-96c1-46d0f6bcaf62" Version="V2">
                     <uix:NApplicationCard.Body>
                       <ActivityAction x:TypeArguments="x:Object">
                         <ActivityAction.Argument>
@@ -507,13 +508,13 @@
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <uix:NExtractDataGeneric x:TypeArguments="sd3:DataTable1" ExtractDataSettings="{x:Null}" ContinueOnError="True" DisplayName="Extract Table Data 'UL'" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/row&gt;&lt;column exact='1' name='Column0' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column1' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='4' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column2' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column3' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;/column&gt;&lt;/extract&gt;" ExtractedData="[out_dtTrenuri]" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486.4,146.4" sap2010:WorkflowViewState.IdRef="NExtractDataGeneric`1_1" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="25115f55-a4b8-4039-96c1-46d0f6bcaf62" Version="V5">
+                          <uix:NExtractDataGeneric x:TypeArguments="sd3:DataTable1" ExtractDataSettings="{x:Null}" ContinueOnError="True" DisplayName="Extract Table Data 'UL'" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/row&gt;&lt;column exact='1' name='Column0' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column1' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='4' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column2' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column3' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;/column&gt;&lt;/extract&gt;" ExtractedData="[out_dtTrenuri]" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486,147" sap2010:WorkflowViewState.IdRef="NExtractDataGeneric`1_1" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="25115f55-a4b8-4039-96c1-46d0f6bcaf62" Version="V5">
                             <uix:NExtractDataGeneric.Target>
                               <uix:TargetAnchorable BrowserURL="https://mersultrenurilor.infofer.ro/ro-RO/Itineraries?DepartureStationName=Bucure%C8%99ti+Nord&amp;ArrivalStationName=General+Nicolae+D%C4%83sc%C4%83lescu&amp;DepartureDate=15.01.2026+0%3A00%3A00&amp;AreOnlyTrainsWithReservation=false&amp;ArrivalTrainRunningNumber=&amp;DepartureTrainRunningNumber=&amp;ConnectionsTypeId=1&amp;MinutesInDay=0&amp;OrderingTypeId=0&amp;TimeSelectionId=0&amp;ChangeStationName=&amp;BetweenTrainsMinimumMinutes=&amp;IsOnlineBuyingRequired=false&amp;IsBikesServiceRequired=false&amp;IsBarRestaurantServiceRequired=false&amp;IsSleeperCouchetteServiceRequired=false" ContentHash="wyyMp2_raEGlMixGcvWA_g" DesignTimeRectangle="266, -552, 1387, 2317" ElementType="List" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl parentid='div-results' tag='UL' /&gt;" Guid="1f44fe9d-2d76-45f9-8a29-b072781eeb6a" InformativeScreenshot="09f00ceb4bf65e34df132f7fa2f35596.png" Reference="B_4lzU5DB0unScnNBHgJSw/1MuzvA9gaEWZ0QNOQQPKzg" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Rute trenuri - București Nord - General Nicolae Dăscălescu - Mersul trenurilor CFR' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                             </uix:NExtractDataGeneric.Target>
                           </uix:NExtractDataGeneric>
-                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="486.4,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Randuri: &quot; &amp; out_dtTrenuri.Rows.Count.ToString &amp;&#xA;&quot; | Coloane: &quot; &amp; out_dtTrenuri.Columns.Count.ToString]" />
-                          <Assign sap:VirtualizedContainerService.HintSize="486.4,178.4" sap2010:WorkflowViewState.IdRef="Assign_12">
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="486,179" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Randuri: &quot; &amp; out_dtTrenuri.Rows.Count.ToString &amp;&#xA;&quot; | Coloane: &quot; &amp; out_dtTrenuri.Columns.Count.ToString]" />
+                          <Assign sap:VirtualizedContainerService.HintSize="486,179" sap2010:WorkflowViewState.IdRef="Assign_12">
                             <Assign.To>
                               <OutArgument x:TypeArguments="x:Int32">[index]</OutArgument>
                             </Assign.To>
