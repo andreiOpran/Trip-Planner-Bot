@@ -1,5 +1,6 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="scrape_flights" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
+    <x:Property Name="in_TripId" Type="InArgument(x:String)" />
     <x:Property Name="out_dtZboruri" Type="OutArgument(sd:DataTable)">
       <x:Property.Attributes>
         <RequiredArgumentAttribute />
@@ -95,9 +96,32 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable2</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable4</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable3</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable1</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="WF_ScrapeFlights - Web Scraping Zboruri" sap:VirtualizedContainerService.HintSize="835.6,5000" sap2010:WorkflowViewState.IdRef="Sequence_Main">
+  <Sequence DisplayName="WF_ScrapeFlights - Web Scraping Zboruri" sap:VirtualizedContainerService.HintSize="704,8805.6" sap2010:WorkflowViewState.IdRef="Sequence_Main">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:DateTime" Name="dataPlecare" />
       <Variable x:TypeArguments="x:String" Name="searchURL" />
@@ -114,22 +138,16 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    
-    <!-- Log Start -->
-    <ui:LogMessage DisplayName="Log Message - Start" sap:VirtualizedContainerService.HintSize="590.4,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_Start" Level="Info" Message="[&quot;=== START WF_ScrapeFlights ===&quot; &amp; vbCrLf &amp; &quot;Oras Plecare: &quot; &amp; in_orasPlecare &amp; vbCrLf &amp; &quot;Oras Destinatie: &quot; &amp; in_orasDestinatie &amp; vbCrLf &amp; &quot;Data Plecare: &quot; &amp; in_dataPlecare]" />
-    
-    <!-- Parse data -->
-    <Assign DisplayName="Parse Data Plecare" sap:VirtualizedContainerService.HintSize="590.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_ParseDate">
+    <ui:LogMessage DisplayName="Log Message - Start" sap:VirtualizedContainerService.HintSize="704,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_Start" Level="Info" Message="[&quot;=== START WF_ScrapeFlights ===&quot; &amp; vbCrLf &amp; &quot;Oras Plecare: &quot; &amp; in_orasPlecare &amp; vbCrLf &amp; &quot;Oras Destinatie: &quot; &amp; in_orasDestinatie &amp; vbCrLf &amp; &quot;Data Plecare: &quot; &amp; in_dataPlecare]" />
+    <Assign DisplayName="Parse Data Plecare" sap:VirtualizedContainerService.HintSize="704,174.4" sap2010:WorkflowViewState.IdRef="Assign_ParseDate">
       <Assign.To>
         <OutArgument x:TypeArguments="s:DateTime">[dataPlecare]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(in_dataPlecare, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
+        <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(in_dataPlecare, "dd MMMM yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))]</InArgument>
       </Assign.Value>
     </Assign>
-    
-    <!-- Build search URL - Google Flights accepts natural language queries -->
-    <Assign DisplayName="Build Search URL" sap:VirtualizedContainerService.HintSize="590.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_BuildURL">
+    <Assign DisplayName="Build Search URL" sap:VirtualizedContainerService.HintSize="704,174.4" sap2010:WorkflowViewState.IdRef="Assign_BuildURL">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[searchURL]</OutArgument>
       </Assign.To>
@@ -137,22 +155,16 @@
         <InArgument x:TypeArguments="x:String">["https://www.google.com/travel/flights?q=" &amp; System.Uri.EscapeDataString(in_orasPlecare &amp; " to " &amp; in_orasDestinatie &amp; " " &amp; dataPlecare.ToString("d MMM yyyy", System.Globalization.CultureInfo.InvariantCulture))]</InArgument>
       </Assign.Value>
     </Assign>
-    
-    <ui:LogMessage DisplayName="Log Search URL" sap:VirtualizedContainerService.HintSize="590.4,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_URL" Level="Info" Message="[&quot;Search URL: &quot; &amp; searchURL]" />
-    
-    <!-- Build DataTable -->
-    <ui:BuildDataTable DisplayName="Build Data Table - Flights Results" sap:VirtualizedContainerService.HintSize="590.4,150" sap2010:WorkflowViewState.IdRef="BuildDataTable_Flights" DataTable="[out_dtZboruri]" TableInfo="&lt;NewDataSet&gt;  &lt;xs:schema id='NewDataSet' xmlns='' xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:msdata='urn:schemas-microsoft-com:xml-msdata'&gt;    &lt;xs:element name='NewDataSet' msdata:IsDataSet='true' msdata:MainDataTable='TableName' msdata:UseCurrentLocale='true'&gt;      &lt;xs:complexType&gt;        &lt;xs:choice minOccurs='0' maxOccurs='unbounded'&gt;          &lt;xs:element name='TableName'&gt;            &lt;xs:complexType&gt;              &lt;xs:sequence&gt;                &lt;xs:element name='Companie' msdata:Caption='Companie' minOccurs='0'&gt;                  &lt;xs:simpleType&gt;                    &lt;xs:restriction base='xs:string'&gt;                      &lt;xs:maxLength value='100' /&gt;                    &lt;/xs:restriction&gt;                  &lt;/xs:simpleType&gt;                &lt;/xs:element&gt;                &lt;xs:element name='OraPlecare' msdata:Caption='OraPlecare' minOccurs='0'&gt;                  &lt;xs:simpleType&gt;                    &lt;xs:restriction base='xs:string'&gt;                      &lt;xs:maxLength value='50' /&gt;                    &lt;/xs:restriction&gt;                  &lt;/xs:simpleType&gt;                &lt;/xs:element&gt;                &lt;xs:element name='OraSosire' msdata:Caption='OraSosire' minOccurs='0'&gt;                  &lt;xs:simpleType&gt;                    &lt;xs:restriction base='xs:string'&gt;                      &lt;xs:maxLength value='50' /&gt;                    &lt;/xs:restriction&gt;                  &lt;/xs:simpleType&gt;                &lt;/xs:element&gt;                &lt;xs:element name='Durata' msdata:Caption='Durata' minOccurs='0'&gt;                  &lt;xs:simpleType&gt;                    &lt;xs:restriction base='xs:string'&gt;                      &lt;xs:maxLength value='50' /&gt;                    &lt;/xs:restriction&gt;                  &lt;/xs:simpleType&gt;                &lt;/xs:element&gt;                &lt;xs:element name='Escale' msdata:Caption='Escale' minOccurs='0'&gt;                  &lt;xs:simpleType&gt;                    &lt;xs:restriction base='xs:string'&gt;                      &lt;xs:maxLength value='100' /&gt;                    &lt;/xs:restriction&gt;                  &lt;/xs:simpleType&gt;                &lt;/xs:element&gt;                &lt;xs:element name='Price' msdata:Caption='Price' minOccurs='0'&gt;                  &lt;xs:simpleType&gt;                    &lt;xs:restriction base='xs:string'&gt;                      &lt;xs:maxLength value='50' /&gt;                    &lt;/xs:restriction&gt;                  &lt;/xs:simpleType&gt;                &lt;/xs:element&gt;                &lt;xs:element name='Link' msdata:Caption='Link' minOccurs='0'&gt;                  &lt;xs:simpleType&gt;                    &lt;xs:restriction base='xs:string'&gt;                      &lt;xs:maxLength value='500' /&gt;                    &lt;/xs:restriction&gt;                  &lt;/xs:simpleType&gt;                &lt;/xs:element&gt;                &lt;xs:element name='WithinBudget' type='xs:boolean' minOccurs='0' /&gt;              &lt;/xs:sequence&gt;            &lt;/xs:complexType&gt;          &lt;/xs:element&gt;        &lt;/xs:choice&gt;      &lt;/xs:complexType&gt;    &lt;/xs:element&gt;  &lt;/xs:schema&gt;&lt;/NewDataSet&gt;" />
-    
-    <!-- Retry Loop -->
-    <DoWhile DisplayName="Retry Loop - Web Scraping" sap:VirtualizedContainerService.HintSize="624,3500" sap2010:WorkflowViewState.IdRef="DoWhile_Retry" Condition="[Not scrapingSuccess AndAlso retryCount &lt; maxRetries]">
-      <Sequence DisplayName="Retry Sequence" sap:VirtualizedContainerService.HintSize="590.4,3300" sap2010:WorkflowViewState.IdRef="Sequence_RetryBody">
+    <ui:LogMessage DisplayName="Log Search URL" sap:VirtualizedContainerService.HintSize="704,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_URL" Level="Info" Message="[&quot;Search URL: &quot; &amp; searchURL]" />
+    <ui:BuildDataTable DataTable="[out_dtZboruri]" DisplayName="Build Data Table - Flights Results" sap:VirtualizedContainerService.HintSize="704,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_Flights" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;TripId&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;TransportType&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Provider&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;DepartureTime&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;50&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;ArrivalTime&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;50&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Duration&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;50&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Price&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;50&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;BookingLink&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;500&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+    <DoWhile DisplayName="Retry Loop - Web Scraping" sap:VirtualizedContainerService.HintSize="704,6311.2" sap2010:WorkflowViewState.IdRef="DoWhile_Retry" Condition="[Not scrapingSuccess AndAlso retryCount &lt; maxRetries]">
+      <Sequence DisplayName="Retry Sequence" sap:VirtualizedContainerService.HintSize="659.2,6116" sap2010:WorkflowViewState.IdRef="Sequence_RetryBody">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        
-        <Assign DisplayName="Increment Retry Count" sap:VirtualizedContainerService.HintSize="555.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_IncrementRetry">
+        <Assign DisplayName="Increment Retry Count" sap:VirtualizedContainerService.HintSize="625.6,174.4" sap2010:WorkflowViewState.IdRef="Assign_IncrementRetry">
           <Assign.To>
             <OutArgument x:TypeArguments="x:Int32">[retryCount]</OutArgument>
           </Assign.To>
@@ -160,31 +172,23 @@
             <InArgument x:TypeArguments="x:Int32">[retryCount + 1]</InArgument>
           </Assign.Value>
         </Assign>
-        
-        <ui:LogMessage DisplayName="Log Message - Retry Attempt" sap:VirtualizedContainerService.HintSize="555.2,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_Retry" Level="Info" Message="[&quot;Scraping attempt &quot; &amp; retryCount.ToString &amp; &quot; of &quot; &amp; maxRetries.ToString]" />
-        
-        <!-- Try-Catch -->
-        <TryCatch DisplayName="Try Catch - Flight Scraping" sap:VirtualizedContainerService.HintSize="555.2,2800" sap2010:WorkflowViewState.IdRef="TryCatch_Scraping">
+        <ui:LogMessage DisplayName="Log Message - Retry Attempt" sap:VirtualizedContainerService.HintSize="625.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_Retry" Level="Info" Message="[&quot;Scraping attempt &quot; &amp; retryCount.ToString &amp; &quot; of &quot; &amp; maxRetries.ToString]" />
+        <TryCatch DisplayName="Try Catch - Flight Scraping" sap:VirtualizedContainerService.HintSize="625.6,5707.2" sap2010:WorkflowViewState.IdRef="TryCatch_Scraping">
           <TryCatch.Try>
-            <!-- UI #1: Open Browser with search URL directly -->
-            <ui:OpenBrowser BrowserType="Edge" DisplayName="Open Browser - Google Flights Search" sap:VirtualizedContainerService.HintSize="521.6,2500" sap2010:WorkflowViewState.IdRef="OpenBrowser_Flights" Url="[searchURL]">
+            <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser - Google Flights Search" sap:VirtualizedContainerService.HintSize="624,5061.6" sap2010:WorkflowViewState.IdRef="OpenBrowser_Flights" Url="[searchURL]">
               <ui:OpenBrowser.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Browser Actions Sequence" sap:VirtualizedContainerService.HintSize="486.4,2200" sap2010:WorkflowViewState.IdRef="Sequence_BrowserActions">
+                  <Sequence DisplayName="Browser Actions Sequence" sap:VirtualizedContainerService.HintSize="590.4,4936" sap2010:WorkflowViewState.IdRef="Sequence_BrowserActions">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    
-                    <!-- UI #2: Wait for page load -->
-                    <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="451.2,120" sap2010:WorkflowViewState.IdRef="Delay_PageLoad" />
-                    
-                    <!-- Set results found to true and try to extract -->
-                    <Assign DisplayName="Set Results Found True" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_ResultsFound">
+                    <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="556.8,126.4" sap2010:WorkflowViewState.IdRef="Delay_PageLoad" />
+                    <Assign DisplayName="Set Results Found True" sap:VirtualizedContainerService.HintSize="556.8,178.4" sap2010:WorkflowViewState.IdRef="Assign_ResultsFound">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:Boolean">[resultsFound]</OutArgument>
                       </Assign.To>
@@ -192,23 +196,18 @@
                         <InArgument x:TypeArguments="x:Boolean">[True]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    
-                    <!-- Process results if found -->
-                    <If Condition="[resultsFound]" DisplayName="If Results Found" sap:VirtualizedContainerService.HintSize="451.2,1600" sap2010:WorkflowViewState.IdRef="If_ResultsFound">
+                    <If Condition="[resultsFound]" DisplayName="If Results Found" sap:VirtualizedContainerService.HintSize="556.8,4515.2" sap2010:WorkflowViewState.IdRef="If_ResultsFound">
                       <If.Then>
-                        <Sequence DisplayName="Process Flight Results" sap:VirtualizedContainerService.HintSize="449.6,1400" sap2010:WorkflowViewState.IdRef="Sequence_ProcessResults">
+                        <Sequence DisplayName="Process Flight Results" sap:VirtualizedContainerService.HintSize="555.2,4139.2" sap2010:WorkflowViewState.IdRef="Sequence_ProcessResults">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          
-                          <ui:LogMessage DisplayName="Log Message - Results Found" sap:VirtualizedContainerService.HintSize="416,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_ResultsFound" Level="Info" Message="[&quot;Rezultate zboruri gasite! Se proceseaza...&quot;]" />
-                          
-                          <!-- UI #4: Get text from results - using body to get all page content -->
-                          <ui:GetValue ContinueOnError="True" DisplayName="Get Full Text - Flight Results" sap:VirtualizedContainerService.HintSize="416,143.2" sap2010:WorkflowViewState.IdRef="GetValue_FlightResults">
+                          <ui:LogMessage DisplayName="Log Message - Results Found" sap:VirtualizedContainerService.HintSize="521.6,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_ResultsFound" Level="Info" Message="[&quot;Rezultate zboruri gasite! Se proceseaza...&quot;]" />
+                          <ui:GetValue ContinueOnError="True" DisplayName="Get Full Text - Flight Results" sap:VirtualizedContainerService.HintSize="521.6,122.4" sap2010:WorkflowViewState.IdRef="GetValue_FlightResults">
                             <ui:GetValue.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;webctrl tag='BODY' /&gt;" TimeoutMS="15000">
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a19400f1-ae56-4dab-80dc-3910e73590da" Selector="&lt;webctrl tag='BODY' /&gt;" TimeoutMS="15000">
                                 <ui:Target.WaitForReady>
                                   <InArgument x:TypeArguments="ui:WaitForReady" />
                                 </ui:Target.WaitForReady>
@@ -218,13 +217,10 @@
                               <OutArgument x:TypeArguments="x:String">[extractedText]</OutArgument>
                             </ui:GetValue.Value>
                           </ui:GetValue>
-                          
-                          <ui:LogMessage DisplayName="Log Extracted Text Length" sap:VirtualizedContainerService.HintSize="416,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_ExtractedLength" Level="Info" Message="[&quot;Text extras - lungime: &quot; &amp; If(extractedText IsNot Nothing, extractedText.Length.ToString, &quot;NULL&quot;) &amp; &quot; caractere&quot;]" />
-                          
-                          <!-- Parse and add to DataTable -->
-                          <If Condition="[Not String.IsNullOrWhiteSpace(extractedText)]" DisplayName="If Has Text" sap:VirtualizedContainerService.HintSize="416,800" sap2010:WorkflowViewState.IdRef="If_HasText">
+                          <ui:LogMessage DisplayName="Log Extracted Text Length" sap:VirtualizedContainerService.HintSize="521.6,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_ExtractedLength" Level="Info" Message="[&quot;Text extras - lungime: &quot; &amp; If(extractedText IsNot Nothing, extractedText.Length.ToString, &quot;NULL&quot;) &amp; &quot; caractere&quot;]" />
+                          <If Condition="[Not String.IsNullOrWhiteSpace(extractedText)]" DisplayName="If Has Text" sap:VirtualizedContainerService.HintSize="521.6,3248" sap2010:WorkflowViewState.IdRef="If_HasText">
                             <If.Then>
-                              <Sequence DisplayName="Parse and Add Data" sap:VirtualizedContainerService.HintSize="414.4,600" sap2010:WorkflowViewState.IdRef="Sequence_ParseData">
+                              <Sequence DisplayName="Parse and Add Data" sap:VirtualizedContainerService.HintSize="520,3011.2" sap2010:WorkflowViewState.IdRef="Sequence_ParseData">
                                 <Sequence.Variables>
                                   <Variable x:TypeArguments="scg:List(x:String)" Name="priceValues" />
                                   <Variable x:TypeArguments="x:String" Name="companie" />
@@ -246,9 +242,7 @@
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                
-                                <!-- Find all RON prices with their positions - format: "position|price" -->
-                                <Assign DisplayName="Find All Prices as Array" sap:VirtualizedContainerService.HintSize="381.6,174.4" sap2010:WorkflowViewState.IdRef="Assign_FindPrices">
+                                <Assign DisplayName="Find All Prices as Array" sap:VirtualizedContainerService.HintSize="486.4,178.4" sap2010:WorkflowViewState.IdRef="Assign_FindPrices">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="scg:List(x:String)">[priceValues]</OutArgument>
                                   </Assign.To>
@@ -256,25 +250,20 @@
                                     <InArgument x:TypeArguments="scg:List(x:String)">[Regex.Matches(extractedText, "RON\s*\d{2,4}", RegexOptions.IgnoreCase).Cast(Of System.Text.RegularExpressions.Match)().Select(Function(m) m.Index.ToString &amp; "|" &amp; m.Value).ToList()]</InArgument>
                                   </Assign.Value>
                                 </Assign>
-                                
-                                <ui:LogMessage DisplayName="Log Prices Found" sap:VirtualizedContainerService.HintSize="381.6,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_MatchesFound" Level="Info" Message="[&quot;Preturi gasite: &quot; &amp; priceValues.Count.ToString]" />
-                                
-                                <!-- UI #5: For Each price -->
-                                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[matchIndex]" DisplayName="For Each Price" sap:VirtualizedContainerService.HintSize="381.6,250" sap2010:WorkflowViewState.IdRef="ForEach_Prices" Values="[priceValues]">
+                                <ui:LogMessage DisplayName="Log Prices Found" sap:VirtualizedContainerService.HintSize="486.4,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_MatchesFound" Level="Info" Message="[&quot;Preturi gasite: &quot; &amp; priceValues.Count.ToString]" />
+                                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[matchIndex]" DisplayName="For Each Price" sap:VirtualizedContainerService.HintSize="486.4,2590.4" sap2010:WorkflowViewState.IdRef="ForEach_Prices" Values="[priceValues]">
                                   <ui:ForEach.Body>
                                     <ActivityAction x:TypeArguments="x:String">
                                       <ActivityAction.Argument>
                                         <DelegateInArgument x:TypeArguments="x:String" Name="currentPrice" />
                                       </ActivityAction.Argument>
-                                      <Sequence DisplayName="Process Price" sap:VirtualizedContainerService.HintSize="345.6,150" sap2010:WorkflowViewState.IdRef="Sequence_ProcessPrice">
+                                      <Sequence DisplayName="Process Price" sap:VirtualizedContainerService.HintSize="484.8,2464.8" sap2010:WorkflowViewState.IdRef="Sequence_ProcessPrice">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        
-                                        <!-- Get price from combined string (format: "position|price") -->
-                                        <Assign DisplayName="Get Price" sap:VirtualizedContainerService.HintSize="312,174.4" sap2010:WorkflowViewState.IdRef="Assign_GetPrice">
+                                        <Assign DisplayName="Get Price" sap:VirtualizedContainerService.HintSize="451.2,178.4" sap2010:WorkflowViewState.IdRef="Assign_GetPrice">
                                           <Assign.To>
                                             <OutArgument x:TypeArguments="x:String">[pret]</OutArgument>
                                           </Assign.To>
@@ -282,9 +271,7 @@
                                             <InArgument x:TypeArguments="x:String">[currentPrice.Split("|"c)(1)]</InArgument>
                                           </Assign.Value>
                                         </Assign>
-                                        
-                                        <!-- Get position directly from combined string -->
-                                        <Assign DisplayName="Get Price Position" sap:VirtualizedContainerService.HintSize="312,174.4" sap2010:WorkflowViewState.IdRef="Assign_PricePos">
+                                        <Assign DisplayName="Get Price Position" sap:VirtualizedContainerService.HintSize="451.2,178.4" sap2010:WorkflowViewState.IdRef="Assign_PricePos">
                                           <Assign.To>
                                             <OutArgument x:TypeArguments="x:Int32">[pricePos]</OutArgument>
                                           </Assign.To>
@@ -292,29 +279,23 @@
                                             <InArgument x:TypeArguments="x:Int32">[CInt(currentPrice.Split("|"c)(0))]</InArgument>
                                           </Assign.Value>
                                         </Assign>
-                                        
-                                        <!-- Get context before price (500 chars) for extracting flight details -->
-                                        <Assign DisplayName="Get Context Before Price" sap:VirtualizedContainerService.HintSize="312,174.4" sap2010:WorkflowViewState.IdRef="Assign_GetContext">
+                                        <Assign DisplayName="Get Context Before Price" sap:VirtualizedContainerService.HintSize="451.2,178.4" sap2010:WorkflowViewState.IdRef="Assign_GetContext">
                                           <Assign.To>
                                             <OutArgument x:TypeArguments="x:String">[contextBefore]</OutArgument>
                                           </Assign.To>
                                           <Assign.Value>
-                                            <InArgument x:TypeArguments="x:String">[If(pricePos > 500, extractedText.Substring(pricePos - 500, 500), If(pricePos > 0, extractedText.Substring(0, pricePos), ""))]</InArgument>
+                                            <InArgument x:TypeArguments="x:String">[If(pricePos &gt; 500, extractedText.Substring(pricePos - 500, 500), If(pricePos &gt; 0, extractedText.Substring(0, pricePos), ""))]</InArgument>
                                           </Assign.Value>
                                         </Assign>
-                                        
-                                        <!-- Get full context (300 before + 200 after price) for duration search -->
-                                        <Assign DisplayName="Get Full Context" sap:VirtualizedContainerService.HintSize="312,174.4" sap2010:WorkflowViewState.IdRef="Assign_GetFullContext">
+                                        <Assign DisplayName="Get Full Context" sap:VirtualizedContainerService.HintSize="451.2,178.4" sap2010:WorkflowViewState.IdRef="Assign_GetFullContext">
                                           <Assign.To>
                                             <OutArgument x:TypeArguments="x:String">[contextFull]</OutArgument>
                                           </Assign.To>
                                           <Assign.Value>
-                                            <InArgument x:TypeArguments="x:String">[If(pricePos > 300, extractedText.Substring(pricePos - 300, Math.Min(500, extractedText.Length - pricePos + 300)), If(pricePos > 0, extractedText.Substring(0, Math.Min(pricePos + 200, extractedText.Length)), ""))]</InArgument>
+                                            <InArgument x:TypeArguments="x:String">[If(pricePos &gt; 300, extractedText.Substring(pricePos - 300, Math.Min(500, extractedText.Length - pricePos + 300)), If(pricePos &gt; 0, extractedText.Substring(0, Math.Min(pricePos + 200, extractedText.Length)), ""))]</InArgument>
                                           </Assign.Value>
                                         </Assign>
-                                        
-                                        <!-- Find time pattern like "22:20 – 23:35" (two times separated by non-digits) -->
-                                        <Assign DisplayName="Find Time Pattern" sap:VirtualizedContainerService.HintSize="312,174.4" sap2010:WorkflowViewState.IdRef="Assign_TimePattern">
+                                        <Assign DisplayName="Find Time Pattern" sap:VirtualizedContainerService.HintSize="451.2,178.4" sap2010:WorkflowViewState.IdRef="Assign_TimePattern">
                                           <Assign.To>
                                             <OutArgument x:TypeArguments="x:String">[timePattern]</OutArgument>
                                           </Assign.To>
@@ -322,29 +303,23 @@
                                             <InArgument x:TypeArguments="x:String">[If(Regex.IsMatch(contextBefore, "\d{2}:\d{2}[^\d]+\d{2}:\d{2}"), Regex.Match(contextBefore, "\d{2}:\d{2}[^\d]+\d{2}:\d{2}").Value, "")]</InArgument>
                                           </Assign.Value>
                                         </Assign>
-                                        
-                                        <!-- Extract departure time - first 5 characters of pattern (HH:MM) -->
-                                        <Assign DisplayName="Extract Departure Time" sap:VirtualizedContainerService.HintSize="312,174.4" sap2010:WorkflowViewState.IdRef="Assign_ExtractDeparture">
+                                        <Assign DisplayName="Extract Departure Time" sap:VirtualizedContainerService.HintSize="451.2,178.4" sap2010:WorkflowViewState.IdRef="Assign_ExtractDeparture">
                                           <Assign.To>
                                             <OutArgument x:TypeArguments="x:String">[oraPlecare]</OutArgument>
                                           </Assign.To>
                                           <Assign.Value>
-                                            <InArgument x:TypeArguments="x:String">[If(timePattern.Length >= 11, timePattern.Substring(0, 5), "N/A")]</InArgument>
+                                            <InArgument x:TypeArguments="x:String">[If(timePattern.Length &gt;= 11, timePattern.Substring(0, 5), "N/A")]</InArgument>
                                           </Assign.Value>
                                         </Assign>
-                                        
-                                        <!-- Extract arrival time - last 5 characters of pattern (HH:MM) -->
-                                        <Assign DisplayName="Extract Arrival Time" sap:VirtualizedContainerService.HintSize="312,174.4" sap2010:WorkflowViewState.IdRef="Assign_ExtractArrival">
+                                        <Assign DisplayName="Extract Arrival Time" sap:VirtualizedContainerService.HintSize="451.2,178.4" sap2010:WorkflowViewState.IdRef="Assign_ExtractArrival">
                                           <Assign.To>
                                             <OutArgument x:TypeArguments="x:String">[oraSosire]</OutArgument>
                                           </Assign.To>
                                           <Assign.Value>
-                                            <InArgument x:TypeArguments="x:String">[If(timePattern.Length >= 11, timePattern.Substring(timePattern.Length - 5), "N/A")]</InArgument>
+                                            <InArgument x:TypeArguments="x:String">[If(timePattern.Length &gt;= 11, timePattern.Substring(timePattern.Length - 5), "N/A")]</InArgument>
                                           </Assign.Value>
                                         </Assign>
-                                        
-                                        <!-- Detect airline from full context -->
-                                        <Assign DisplayName="Detect Companie" sap:VirtualizedContainerService.HintSize="312,174.4" sap2010:WorkflowViewState.IdRef="Assign_Companie">
+                                        <Assign DisplayName="Detect Companie" sap:VirtualizedContainerService.HintSize="451.2,178.4" sap2010:WorkflowViewState.IdRef="Assign_Companie">
                                           <Assign.To>
                                             <OutArgument x:TypeArguments="x:String">[companie]</OutArgument>
                                           </Assign.To>
@@ -352,9 +327,7 @@
                                             <InArgument x:TypeArguments="x:String">[If(contextFull.ToLower.Contains("wizz"), "Wizz Air", If(contextFull.ToLower.Contains("ryanair"), "Ryanair", If(contextFull.ToLower.Contains("tarom"), "TAROM", If(contextFull.ToLower.Contains("lufthansa"), "Lufthansa", If(contextFull.ToLower.Contains("blue air"), "Blue Air", If(contextFull.ToLower.Contains("austrian"), "Austrian", If(contextFull.ToLower.Contains("turkish"), "Turkish Airlines", If(contextFull.ToLower.Contains("malta"), "Malta Air", "Various"))))))))]</InArgument>
                                           </Assign.Value>
                                         </Assign>
-                                        
-                                        <!-- Detect stops from full context -->
-                                        <Assign DisplayName="Detect Escale" sap:VirtualizedContainerService.HintSize="312,174.4" sap2010:WorkflowViewState.IdRef="Assign_Escale">
+                                        <Assign DisplayName="Detect Escale" sap:VirtualizedContainerService.HintSize="451.2,178.4" sap2010:WorkflowViewState.IdRef="Assign_Escale">
                                           <Assign.To>
                                             <OutArgument x:TypeArguments="x:String">[escale]</OutArgument>
                                           </Assign.To>
@@ -362,9 +335,7 @@
                                             <InArgument x:TypeArguments="x:String">[If(contextFull.ToLower.Contains("non-stop") OrElse contextFull.ToLower.Contains("nonstop"), "Direct", If(Regex.IsMatch(contextFull, "1\s*stop", RegexOptions.IgnoreCase), "1 Escala", If(Regex.IsMatch(contextFull, "2\s*stop", RegexOptions.IgnoreCase), "2 Escale", "N/A")))]</InArgument>
                                           </Assign.Value>
                                         </Assign>
-                                        
-                                        <!-- Detect duration from full context - format: "2 hrs 15 min" or "2 hr 30 min" -->
-                                        <Assign DisplayName="Detect Durata" sap:VirtualizedContainerService.HintSize="312,174.4" sap2010:WorkflowViewState.IdRef="Assign_Durata">
+                                        <Assign DisplayName="Detect Durata" sap:VirtualizedContainerService.HintSize="451.2,178.4" sap2010:WorkflowViewState.IdRef="Assign_Durata">
                                           <Assign.To>
                                             <OutArgument x:TypeArguments="x:String">[durata]</OutArgument>
                                           </Assign.To>
@@ -372,63 +343,73 @@
                                             <InArgument x:TypeArguments="x:String">[If(Regex.IsMatch(contextFull, "\d+\s*hrs?\s*\d+\s*min", RegexOptions.IgnoreCase), Regex.Match(contextFull, "\d+\s*hrs?\s*\d+\s*min", RegexOptions.IgnoreCase).Value, If(Regex.IsMatch(contextFull, "\d+\s*hrs?", RegexOptions.IgnoreCase), Regex.Match(contextFull, "\d+\s*hrs?", RegexOptions.IgnoreCase).Value, "N/A"))]</InArgument>
                                           </Assign.Value>
                                         </Assign>
-                                        
-                                        <!-- Check budget -->
-                                        <Assign DisplayName="Check Budget" sap:VirtualizedContainerService.HintSize="312,174.4" sap2010:WorkflowViewState.IdRef="Assign_Budget">
+                                        <Assign DisplayName="Check Budget" sap:VirtualizedContainerService.HintSize="451.2,178.4" sap2010:WorkflowViewState.IdRef="Assign_Budget">
                                           <Assign.To>
                                             <OutArgument x:TypeArguments="x:Boolean">[withinBudget]</OutArgument>
                                           </Assign.To>
                                           <Assign.Value>
-                                            <InArgument x:TypeArguments="x:Boolean">[If(in_Budget > 0 AndAlso Regex.IsMatch(pret, "\d+"), CDbl(Regex.Match(pret, "\d+").Value) &lt;= in_Budget, True)]</InArgument>
+                                            <InArgument x:TypeArguments="x:Boolean">[If(in_Budget &gt; 0 AndAlso Regex.IsMatch(pret, "\d+"), CDbl(Regex.Match(pret, "\d+").Value) &lt;= in_Budget, True)]</InArgument>
                                           </Assign.Value>
                                         </Assign>
-                                        
-                                        <!-- Only add row if we have valid times (this filters out non-flight prices) -->
-                                        <If Condition="[oraPlecare &lt;&gt; &quot;N/A&quot; AndAlso oraSosire &lt;&gt; &quot;N/A&quot; AndAlso oraPlecare &lt;&gt; oraSosire]" DisplayName="If Valid Flight" sap:VirtualizedContainerService.HintSize="312,200" sap2010:WorkflowViewState.IdRef="If_ValidFlight">
+                                        <If Condition="[oraPlecare &lt;&gt; &quot;N/A&quot; AndAlso oraSosire &lt;&gt; &quot;N/A&quot; AndAlso oraPlecare &lt;&gt; oraSosire]" DisplayName="If Valid Flight" sap:VirtualizedContainerService.HintSize="451.2,438.4" sap2010:WorkflowViewState.IdRef="If_ValidFlight">
                                           <If.Then>
-                                            <!-- UI #6: Add row -->
-                                            <ui:AddDataRow DataRow="{x:Null}" DataTable="[out_dtZboruri]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="276,146.4" sap2010:WorkflowViewState.IdRef="AddDataRow_Flight" ArrayRow="[New Object() {companie, oraPlecare, oraSosire, durata, escale, pret, searchURL, withinBudget}]" />
+                                            <ui:AddDataRow DataRow="{x:Null}" DataTable="[out_dtZboruri]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="449.6,188" sap2010:WorkflowViewState.IdRef="AddDataRow_Flight">
+                                              <ui:AddDataRow.ArrayRow>
+                                                <InArgument x:TypeArguments="s:Object[]">
+                                                  <VisualBasicValue x:TypeArguments="s:Object[]" ExpressionText="New Object() {in_TripId, &quot;Zbor&quot;, companie, oraPlecare, oraSosire, durata, pret, searchURL}" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
+                                                </InArgument>
+                                              </ui:AddDataRow.ArrayRow>
+                                            </ui:AddDataRow>
                                           </If.Then>
+                                          <If.Else>
+                                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,94.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </Sequence>
+                                          </If.Else>
                                         </If>
-                                        
                                       </Sequence>
                                     </ActivityAction>
                                   </ui:ForEach.Body>
                                 </ui:ForEach>
-                                
                               </Sequence>
                             </If.Then>
+                            <If.Else>
+                              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="520,94.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Sequence>
+                            </If.Else>
                           </If>
-                          
-                          <!-- Mark success only if we found flights -->
-                          <Assign DisplayName="Set Scraping Success" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_Success">
+                          <Assign DisplayName="Set Scraping Success" sap:VirtualizedContainerService.HintSize="521.6,178.4" sap2010:WorkflowViewState.IdRef="Assign_Success">
                             <Assign.To>
                               <OutArgument x:TypeArguments="x:Boolean">[scrapingSuccess]</OutArgument>
                             </Assign.To>
                             <Assign.Value>
-                              <InArgument x:TypeArguments="x:Boolean">[out_dtZboruri.Rows.Count > 0 OrElse (extractedText IsNot Nothing AndAlso extractedText.Contains("RON"))]</InArgument>
+                              <InArgument x:TypeArguments="x:Boolean">[out_dtZboruri.Rows.Count &gt; 0 OrElse (extractedText IsNot Nothing AndAlso extractedText.Contains("RON"))]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          
-                          <ui:LogMessage DisplayName="Log Message - Scraping Complete" sap:VirtualizedContainerService.HintSize="416,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_Complete" Level="Info" Message="[&quot;Scraping zboruri finalizat cu succes! Total zboruri: &quot; &amp; out_dtZboruri.Rows.Count.ToString]" />
-                          
+                          <ui:LogMessage DisplayName="Log Message - Scraping Complete" sap:VirtualizedContainerService.HintSize="521.6,169.6" sap2010:WorkflowViewState.IdRef="LogMessage_Complete" Level="Info" Message="[&quot;Scraping zboruri finalizat cu succes! Total zboruri: &quot; &amp; out_dtZboruri.Rows.Count.ToString]" />
                         </Sequence>
                       </If.Then>
                       <If.Else>
-                        <Sequence DisplayName="No Results Found" sap:VirtualizedContainerService.HintSize="449.6,233.6" sap2010:WorkflowViewState.IdRef="Sequence_NoResults">
+                        <Sequence DisplayName="No Results Found" sap:VirtualizedContainerService.HintSize="555.2,233.6" sap2010:WorkflowViewState.IdRef="Sequence_NoResults">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:LogMessage DisplayName="Log Message - No Results" sap:VirtualizedContainerService.HintSize="416,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_NoResults" Level="Warn" Message="[&quot;Nu au fost gasite rezultate pentru zboruri. Se va reincerca...&quot;]" />
+                          <ui:LogMessage DisplayName="Log Message - No Results" sap:VirtualizedContainerService.HintSize="521.6,169.6" sap2010:WorkflowViewState.IdRef="LogMessage_NoResults" Level="Warn" Message="[&quot;Nu au fost gasite rezultate pentru zboruri. Se va reincerca...&quot;]" />
                         </Sequence>
                       </If.Else>
                     </If>
-                    
-                    <!-- UI #7: Close Tab -->
-                    <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="451.2,52" sap2010:WorkflowViewState.IdRef="CloseTab_Browser" />
-                    
+                    <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="556.8,52" sap2010:WorkflowViewState.IdRef="CloseTab_Browser" />
                   </Sequence>
                 </ActivityAction>
               </ui:OpenBrowser.Body>
@@ -440,34 +421,47 @@
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="s:Exception" Name="generalException" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Handle General Exception" sap:VirtualizedContainerService.HintSize="486.4,300" sap2010:WorkflowViewState.IdRef="Sequence_HandleGeneral">
+                <Sequence DisplayName="Handle General Exception" sap:VirtualizedContainerService.HintSize="624,360" sap2010:WorkflowViewState.IdRef="Sequence_HandleGeneral">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message - General Error" sap:VirtualizedContainerService.HintSize="451.2,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_GeneralError" Level="Error" Message="[&quot;Eroare la scraping zboruri: &quot; &amp; generalException.Message &amp; vbCrLf &amp; &quot;Stack: &quot; &amp; generalException.StackTrace]" />
-                  <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="451.2,120" sap2010:WorkflowViewState.IdRef="Delay_BeforeRetryGeneral" />
+                  <ui:LogMessage DisplayName="Log Message - General Error" sap:VirtualizedContainerService.HintSize="590.4,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_GeneralError" Level="Error" Message="[&quot;Eroare la scraping zboruri: &quot; &amp; generalException.Message &amp; vbCrLf &amp; &quot;Stack: &quot; &amp; generalException.StackTrace]" />
+                  <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="590.4,117.6" sap2010:WorkflowViewState.IdRef="Delay_BeforeRetryGeneral" />
                 </Sequence>
               </ActivityAction>
             </Catch>
           </TryCatch.Catches>
+          <TryCatch.Finally>
+            <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="624,94.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Sequence>
+          </TryCatch.Finally>
         </TryCatch>
-        
       </Sequence>
     </DoWhile>
-    
-    <!-- Check if all retries failed -->
-    <If Condition="[Not scrapingSuccess]" DisplayName="If All Retries Failed" sap:VirtualizedContainerService.HintSize="624,300" sap2010:WorkflowViewState.IdRef="If_AllRetriesFailed">
+    <If Condition="[Not scrapingSuccess]" DisplayName="If All Retries Failed" sap:VirtualizedContainerService.HintSize="704,397.6" sap2010:WorkflowViewState.IdRef="If_AllRetriesFailed">
       <If.Then>
-        <ui:LogMessage DisplayName="Log Message - All Retries Failed" sap:VirtualizedContainerService.HintSize="588.8,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_AllFailed" Level="Error" Message="[&quot;Toate incercarile de scraping au esuat dupa &quot; &amp; maxRetries.ToString &amp; &quot; incercari&quot;]" />
+        <ui:LogMessage DisplayName="Log Message - All Retries Failed" sap:VirtualizedContainerService.HintSize="449.6,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_AllFailed" Level="Error" Message="[&quot;Toate incercarile de scraping au esuat dupa &quot; &amp; maxRetries.ToString &amp; &quot; incercari&quot;]" />
       </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,94.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
     </If>
-    
-    <!-- Sort results by price -->
-    <If Condition="[out_dtZboruri.Rows.Count > 0]" DisplayName="If Has Results - Sort" sap:VirtualizedContainerService.HintSize="624,400" sap2010:WorkflowViewState.IdRef="If_HasResultsSort">
+    <If Condition="[out_dtZboruri.Rows.Count &gt; 0]" DisplayName="If Has Results - Sort" sap:VirtualizedContainerService.HintSize="704,1118.4" sap2010:WorkflowViewState.IdRef="If_HasResultsSort">
       <If.Then>
-        <Sequence DisplayName="Sort and Deduplicate Results" sap:VirtualizedContainerService.HintSize="622.4,400" sap2010:WorkflowViewState.IdRef="Sequence_SortResults">
+        <Sequence DisplayName="Sort and Deduplicate Results" sap:VirtualizedContainerService.HintSize="449.6,885.6" sap2010:WorkflowViewState.IdRef="Sequence_SortResults">
           <Sequence.Variables>
             <Variable x:TypeArguments="sd:DataTable" Name="dtDistinct" />
           </Sequence.Variables>
@@ -476,18 +470,15 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          
-          <!-- Remove duplicates based on Companie + OraPlecare + OraSosire + Price -->
-          <Assign DisplayName="Remove Duplicates" sap:VirtualizedContainerService.HintSize="588.8,174.4" sap2010:WorkflowViewState.IdRef="Assign_RemoveDuplicates">
+          <Assign DisplayName="Remove Duplicates" sap:VirtualizedContainerService.HintSize="416,178.4" sap2010:WorkflowViewState.IdRef="Assign_RemoveDuplicates">
             <Assign.To>
               <OutArgument x:TypeArguments="sd:DataTable">[dtDistinct]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="sd:DataTable">[out_dtZboruri.DefaultView.ToTable(True, "Companie", "OraPlecare", "OraSosire", "Durata", "Escale", "Price", "Link", "WithinBudget")]</InArgument>
+              <InArgument x:TypeArguments="sd:DataTable">[out_dtZboruri.DefaultView.ToTable(True, "TripId", "TransportType", "Provider", "DepartureTime", "ArrivalTime", "Duration", "Price", "BookingLink")]</InArgument>
             </Assign.Value>
           </Assign>
-          
-          <Assign DisplayName="Assign Distinct Result" sap:VirtualizedContainerService.HintSize="588.8,174.4" sap2010:WorkflowViewState.IdRef="Assign_DistinctResult">
+          <Assign DisplayName="Assign Distinct Result" sap:VirtualizedContainerService.HintSize="416,178.4" sap2010:WorkflowViewState.IdRef="Assign_DistinctResult">
             <Assign.To>
               <OutArgument x:TypeArguments="sd:DataTable">[out_dtZboruri]</OutArgument>
             </Assign.To>
@@ -495,12 +486,9 @@
               <InArgument x:TypeArguments="sd:DataTable">[dtDistinct]</InArgument>
             </Assign.Value>
           </Assign>
-          
-          <ui:LogMessage DisplayName="Log After Dedup" sap:VirtualizedContainerService.HintSize="588.8,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_AfterDedup" Level="Info" Message="[&quot;Dupa eliminare duplicate: &quot; &amp; out_dtZboruri.Rows.Count.ToString &amp; &quot; zboruri unice&quot;]" />
-          
-          <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="[&quot;Price&quot;]" DataTable="[out_dtZboruri]" DisplayName="Sort Data Table by Price" sap:VirtualizedContainerService.HintSize="588.8,112.8" sap2010:WorkflowViewState.IdRef="SortDataTable_Price" OutputDataTable="[dtSorted]" SortOrder="Ascending" />
-          
-          <Assign DisplayName="Assign Sorted Result" sap:VirtualizedContainerService.HintSize="588.8,174.4" sap2010:WorkflowViewState.IdRef="Assign_SortedResult">
+          <ui:LogMessage DisplayName="Log After Dedup" sap:VirtualizedContainerService.HintSize="416,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_AfterDedup" Level="Info" Message="[&quot;Dupa eliminare duplicate: &quot; &amp; out_dtZboruri.Rows.Count.ToString &amp; &quot; zboruri unice&quot;]" />
+          <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="[&quot;Price&quot;]" DataTable="[out_dtZboruri]" DisplayName="Sort Data Table by Price" sap:VirtualizedContainerService.HintSize="416,116.8" sap2010:WorkflowViewState.IdRef="SortDataTable_Price" OutputDataTable="[dtSorted]" SortOrder="Ascending" />
+          <Assign DisplayName="Assign Sorted Result" sap:VirtualizedContainerService.HintSize="416,169.6" sap2010:WorkflowViewState.IdRef="Assign_SortedResult">
             <Assign.To>
               <OutArgument x:TypeArguments="sd:DataTable">[out_dtZboruri]</OutArgument>
             </Assign.To>
@@ -508,13 +496,18 @@
               <InArgument x:TypeArguments="sd:DataTable">[dtSorted]</InArgument>
             </Assign.Value>
           </Assign>
-          
         </Sequence>
       </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,94.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
     </If>
-    
-    <!-- Log Final -->
-    <ui:LogMessage DisplayName="Log Message - End Workflow" sap:VirtualizedContainerService.HintSize="590.4,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_End" Level="Info" Message="[&quot;=== END WF_ScrapeFlights === &quot; &amp; vbCrLf &amp; &quot;Zboruri extrase: &quot; &amp; out_dtZboruri.Rows.Count.ToString]" />
-    
+    <ui:LogMessage DisplayName="Log Message - End Workflow" sap:VirtualizedContainerService.HintSize="704,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_End" Level="Info" Message="[&quot;=== END WF_ScrapeFlights === &quot; &amp; vbCrLf &amp; &quot;Zboruri extrase: &quot; &amp; out_dtZboruri.Rows.Count.ToString]" />
   </Sequence>
 </Activity>

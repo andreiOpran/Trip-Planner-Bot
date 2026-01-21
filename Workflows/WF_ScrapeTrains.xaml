@@ -159,7 +159,7 @@
       <AssemblyReference>System.Memory.Data</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="scrape_trains" sap:VirtualizedContainerService.HintSize="835.6,10436.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="scrape_trains" sap:VirtualizedContainerService.HintSize="670.8000000000001,10448.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:DateTime" Default="[DateTime.Today.AddMonths(1)]" Name="dataMaximaPermisa" />
       <Variable x:TypeArguments="x:Double" Name="totalPret" />
@@ -178,7 +178,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap:VirtualizedContainerService.HintSize="624,10413.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap:VirtualizedContainerService.HintSize="624,10425.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Default="https://mersultrenurilor.infofer.ro*" Name="URLrute" />
       </Sequence.Variables>
@@ -192,7 +192,7 @@
           <OutArgument x:TypeArguments="s:DateTime">[dataPlecare]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(in_dataPlecare, "dd/MM/yyyy", New System.Globalization.CultureInfo("ro-RO"))]</InArgument>
+          <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(in_dataPlecare, "dd MMMM yyyy", New System.Globalization.CultureInfo("en-US"))]</InArgument>
         </Assign.Value>
       </Assign>
       <If Condition="[dataPlecare &gt; dataMaximaPermisa]" sap:VirtualizedContainerService.HintSize="590.4,344.8" sap2010:WorkflowViewState.IdRef="If_5">
@@ -241,15 +241,15 @@
           <InArgument x:TypeArguments="x:Int32">[dataPlecare.Year]</InArgument>
         </Assign.Value>
       </Assign>
-      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="590.4,9288" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="590.4,9300" sap2010:WorkflowViewState.IdRef="TryCatch_1">
         <TryCatch.Try>
-          <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="588.8,8642.4" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Private="True" Url="[URLtrenuri]">
+          <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Private: Open Browser" sap:VirtualizedContainerService.HintSize="588.8,8654.4" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Private="True" Url="[URLtrenuri]">
             <ui:OpenBrowser.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                 </ActivityAction.Argument>
-                <Sequence sap:VirtualizedContainerService.HintSize="555.2,8516.8" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                <Sequence sap:VirtualizedContainerService.HintSize="555.2,8528.8" sap2010:WorkflowViewState.IdRef="Sequence_11">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Boolean" Name="statieInexistenta" />
                     <Variable x:TypeArguments="x:Boolean" Name="trenuriGasite" />
@@ -490,13 +490,13 @@
                       </Sequence>
                     </If.Else>
                   </If>
-                  <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Edge Rute trenuri(1)" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="521.6,5706.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_8" InteractionMode="DebuggerApi" ScopeGuid="25115f55-a4b8-4039-96c1-46d0f6bcaf62" Version="V2">
+                  <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Edge Rute trenuri(1)" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="521.6,5718.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_8" InteractionMode="DebuggerApi" ScopeGuid="25115f55-a4b8-4039-96c1-46d0f6bcaf62" Version="V2">
                     <uix:NApplicationCard.Body>
                       <ActivityAction x:TypeArguments="x:Object">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="520,5500" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="520,5512" sap2010:WorkflowViewState.IdRef="Sequence_15">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="x:String" Name="indexStr" />
                             <Variable x:TypeArguments="x:Int32" Default="0" Name="index" />
@@ -531,7 +531,7 @@
                           </Assign>
                           <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Pret" DataTable="[out_dtTrenuri]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="486.4,224" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_7" />
                           <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" Unique="{x:Null}" ColumnName="Rezervare" DataTable="[out_dtTrenuri]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="486.4,224" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_6" MaxLength="-1" />
-                          <uix:NForEachUiElement DisplayName="For Each UI Element 'UL(1)'" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column0' Name='Buton'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='Column0' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='button' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="486.4,1056" sap2010:WorkflowViewState.IdRef="NForEachUiElement_5" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="25115f55-a4b8-4039-96c1-46d0f6bcaf62" Version="V5">
+                          <uix:NForEachUiElement DisplayName="For Each UI Element 'UL(1)'" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column0' Name='Buton'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='Column0' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='button' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="486.4,1060" sap2010:WorkflowViewState.IdRef="NForEachUiElement_5" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="25115f55-a4b8-4039-96c1-46d0f6bcaf62" Version="V5">
                             <uix:NForEachUiElement.Body>
                               <ActivityAction x:TypeArguments="x:Int32">
                                 <ActivityAction.Argument>
@@ -658,7 +658,7 @@
                               <InArgument x:TypeArguments="x:Int32">[-1]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtExtract]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="486.4,1216.8" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
+                          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtExtract]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="486.4,1220.8" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
                             <ui:ForEachRow.Body>
                               <ActivityAction x:TypeArguments="sd:DataRow">
                                 <ActivityAction.Argument>
