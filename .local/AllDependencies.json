@@ -30286,16 +30286,16 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Denis\\.nuget\\packages\\": {},
+    "C:\\Users\\bianc\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "Trip-Planner-Bot",
       "projectName": "Trip-Planner-Bot",
-      "projectPath": "C:\\Users\\Denis\\Documents\\UiPath\\Trip-Planner-Bot\\.local",
-      "packagesPath": "C:\\Users\\Denis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Denis\\Documents\\UiPath\\Trip-Planner-Bot\\.local",
+      "projectPath": "C:\\Users\\bianc\\TripBot\\Trip-Planner-Bot\\.local",
+      "packagesPath": "C:\\Users\\bianc\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bianc\\TripBot\\Trip-Planner-Bot\\.local",
       "UsingMicrosoftNETSdk": false,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -30348,7 +30348,7 @@
             "version": "[2.3.2, 2.3.2]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\Denis\\AppData\\Local\\Programs\\UiPathPlatform\\Studio\\26.0.182-cloud.21895\\PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\UiPathPlatform\\Studio\\26.0.182-cloud.21895\\PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
