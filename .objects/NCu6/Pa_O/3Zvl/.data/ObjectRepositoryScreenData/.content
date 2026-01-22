@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-16"?>
-<ObjectRepositoryScreenData ContentHash="nLIwdPj9l0mOKkpzSJ1cSQ" Reference="IjK8_JfK4kGL2Ko26niEpQ/X8O10drZE0SVGzVoilT3YQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ObjectRepositoryScreenData ContentHash="noZHeCgtmES82NjxfKxlWw" Reference="B_4lzU5DB0unScnNBHgJSw/3ZvlJitlUEe2q_twsskKSA" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <ObjectRepositoryScreenData.Data>
-    <TargetApp x:Key="TargetApp" Area="-9, -9, 1938, 1048" BrowserType="Edge" ContentHash="uQ4CyMB-6kmmSnA9k_t-aA" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFESURBVDhPYxgF2IGwsDBbYmJi7qxZs7bPnj17Z1JSUra8vDwrVBo/AGpmbW5u3jR//vz/a9as+b9w4cL/mzZt+t/a2rpFTEyMGaoMN4gNCkt4evHmv8VzF/w/fPjw/1OnTv0/ffTE/4fnrv2P8guOgCpDgCWc7j1L2d0ewPAaufD36+TC/58tnv7/y5cv/z98+ABmg8TWyIa9RVYL0suwTC2MaZmAT9gyHs9ZQLx3jUzo2006Sf+3GKf9n9jR83/3pm1gNkhstWTwK5AasFqgnsVqEYxQd0DAUj4vsVot75zL6/f+f7rr9P8q9+j/CzPrwexzq3f+q1V0S17C5ykKVY4dKCoqMhYVFU1++PDh37Vr1/4/cuTI/3v37v0vLi7ut7e3h6oiAKysrBicgaCqqqqnvLy8G8h06O7uhsqOAlTAwAAA2QGj2yFdiV4AAAAASUVORK5CYII=" Reference="IjK8_JfK4kGL2Ko26niEpQ/X8O10drZE0SVGzVoilT3YQ" Selector="&lt;html app='msedge.exe' title='Rute trenuri*' /&gt;" Url="[URLrute]" Version="V2">
+    <TargetApp x:Key="TargetApp" Area="-9, -9, 1938, 1048" BrowserType="Chrome" ContentHash="tnvqIW6fwE6Sear7t-WA6A" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFESURBVDhPYxgF2IGwsDBbYmJi7qxZs7bPnj17Z1JSUra8vDwrVBo/AGpmbW5u3jR//vz/a9as+b9w4cL/mzZt+t/a2rpFTEyMGaoMN4gNCkt4evHmv8VzF/w/fPjw/1OnTv0/ffTE/4fnrv2P8guOgCpDgCWc7j1L2d0ewPAaufD36+TC/58tnv7/y5cv/z98+ABmg8TWyIa9RVYL0suwTC2MaZmAT9gyHs9ZQLx3jUzo2006Sf+3GKf9n9jR83/3pm1gNkhstWTwK5AasFqgnsVqEYxQd0DAUj4vsVot75zL6/f+f7rr9P8q9+j/CzPrwexzq3f+q1V0S17C5ykKVY4dKCoqMhYVFU1++PDh37Vr1/4/cuTI/3v37v0vLi7ut7e3h6oiAKysrBicgaCqqqqnvLy8G8h06O7uhsqOAlTAwAAA2QGj2yFdiV4AAAAASUVORK5CYII=" Reference="B_4lzU5DB0unScnNBHgJSw/3ZvlJitlUEe2q_twsskKSA" Selector="&lt;html app='chrome.exe' title='Rute trenuri*' /&gt;" Url="[URLrute]" Version="V2">
       <TargetApp.Arguments>
         <p:InArgument x:TypeArguments="x:String" />
       </TargetApp.Arguments>
       <TargetApp.WorkingDirectory>
         <p:InArgument x:TypeArguments="x:String" />
       </TargetApp.WorkingDirectory>
-      <imageRef attrName="InformativeScreenshot" originalValue="f8a16a9c2ca6bd3ce3fd8b66d6aba299.jpg" xmlns="">f8a16a9c2ca6bd3ce3fd8b66d6aba299.jpg</imageRef>
+      <imageRef attrName="InformativeScreenshot" originalValue="db4393225aab01b5d25806122bbd8c42.jpg" xmlns="">0U0clBI1WYEGFQfQzVf-Y7w</imageRef>
     </TargetApp>
     <scg:List x:TypeArguments="ObjectRepositoryVariableData" x:Key="Variables" Capacity="1">
       <ObjectRepositoryVariableData Name="URLrute" />

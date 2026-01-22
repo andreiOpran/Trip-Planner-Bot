@@ -1,6 +1,11 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="scrape_trains" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd2="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:sd3="clr-namespace:System.Data;assembly=Studio.Generated.TypedDataTable1" xmlns:sd4="clr-namespace:System.Data;assembly=Studio.Generated.TypedDataTable3" xmlns:sd5="clr-namespace:System.Data;assembly=Studio.Generated.TypedDataTable4" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:uuam="clr-namespace:UiPath.UIAutomationNext.Activities.Models;assembly=UiPath.UIAutomationNext.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="scrape_trains" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd2="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:sd3="clr-namespace:System.Data;assembly=Studio.Generated.TypedDataTable8" xmlns:sd4="clr-namespace:System.Data;assembly=Studio.Generated.TypedDataTable6" xmlns:sd5="clr-namespace:System.Data;assembly=Studio.Generated.TypedDataTable12" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:uuam="clr-namespace:UiPath.UIAutomationNext.Activities.Models;assembly=UiPath.UIAutomationNext.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="out_dtTrenuri" Type="OutArgument(sd:DataTable)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="in_tripId" Type="InArgument(x:String)">
       <x:Property.Attributes>
         <RequiredArgumentAttribute />
       </x:Property.Attributes>
@@ -157,9 +162,16 @@
       <AssemblyReference>Studio.Generated.TypedDataTable5</AssemblyReference>
       <AssemblyReference>Studio.Generated.TypedDataTable6</AssemblyReference>
       <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable7</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable8</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable9</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable10</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable11</AssemblyReference>
+      <AssemblyReference>Studio.Generated.TypedDataTable12</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="scrape_trains" sap:VirtualizedContainerService.HintSize="835.6,10436.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="scrape_trains" sap:VirtualizedContainerService.HintSize="897.2,11271.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:DateTime" Default="[DateTime.Today.AddMonths(1)]" Name="dataMaximaPermisa" />
       <Variable x:TypeArguments="x:Double" Name="totalPret" />
@@ -167,18 +179,19 @@
       <Variable x:TypeArguments="x:String" Name="ziPlecareStr" />
       <Variable x:TypeArguments="s:DateTime" Name="dataPlecare" />
       <Variable x:TypeArguments="x:String" Default="https://mersultrenurilor.infofer.ro/ro-RO/Itineraries" Name="URLtrenuri" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtExtract" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtTrenuri" />
+      <Variable x:TypeArguments="sd4:DataTable6" Name="dtExtract" />
       <Variable x:TypeArguments="x:Int32" Default="0" Name="anPlecare" />
       <Variable x:TypeArguments="x:Int32" Default="0" Name="lunaPlecare" />
       <Variable x:TypeArguments="x:Int32" Default="0" Name="ziPlecare" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtDetalii" />
+      <Variable x:TypeArguments="sd5:DataTable12" Name="dtDetalii" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap:VirtualizedContainerService.HintSize="624,10413.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap:VirtualizedContainerService.HintSize="624,11248" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Default="https://mersultrenurilor.infofer.ro*" Name="URLrute" />
       </Sequence.Variables>
@@ -192,7 +205,7 @@
           <OutArgument x:TypeArguments="s:DateTime">[dataPlecare]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(in_dataPlecare, "dd/MM/yyyy", New System.Globalization.CultureInfo("ro-RO"))]</InArgument>
+          <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(in_dataPlecare, "dd MMMM yyyy", New System.Globalization.CultureInfo("en-US"))]</InArgument>
         </Assign.Value>
       </Assign>
       <If Condition="[dataPlecare &gt; dataMaximaPermisa]" sap:VirtualizedContainerService.HintSize="590.4,344.8" sap2010:WorkflowViewState.IdRef="If_5">
@@ -241,15 +254,15 @@
           <InArgument x:TypeArguments="x:Int32">[dataPlecare.Year]</InArgument>
         </Assign.Value>
       </Assign>
-      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="590.4,9288" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="590.4,10122.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
         <TryCatch.Try>
-          <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="588.8,8642.4" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Private="True" Url="[URLtrenuri]">
+          <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Private: Open Browser" sap:VirtualizedContainerService.HintSize="588.8,9476.8" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Private="True" Url="[URLtrenuri]">
             <ui:OpenBrowser.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                 </ActivityAction.Argument>
-                <Sequence sap:VirtualizedContainerService.HintSize="555.2,8516.8" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                <Sequence sap:VirtualizedContainerService.HintSize="555.2,9351.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Boolean" Name="statieInexistenta" />
                     <Variable x:TypeArguments="x:Boolean" Name="trenuriGasite" />
@@ -490,30 +503,31 @@
                       </Sequence>
                     </If.Else>
                   </If>
-                  <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Edge Rute trenuri(1)" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="521.6,5706.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_8" InteractionMode="DebuggerApi" ScopeGuid="25115f55-a4b8-4039-96c1-46d0f6bcaf62" Version="V2">
+                  <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Edge Tab" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="521.6,5988" sap2010:WorkflowViewState.IdRef="NApplicationCard_8" InteractionMode="DebuggerApi" ScopeGuid="25115f55-a4b8-4039-96c1-46d0f6bcaf62" Version="V2">
                     <uix:NApplicationCard.Body>
                       <ActivityAction x:TypeArguments="x:Object">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="520,5500" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="520,5598.4" sap2010:WorkflowViewState.IdRef="Sequence_15">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="x:String" Name="indexStr" />
                             <Variable x:TypeArguments="x:Int32" Default="0" Name="index" />
                             <Variable x:TypeArguments="x:Int32" Default="0" Name="indexDetalii" />
+                            <Variable x:TypeArguments="x:Boolean" Name="testPreturi" />
                           </Sequence.Variables>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <uix:NExtractDataGeneric x:TypeArguments="sd3:DataTable1" ExtractDataSettings="{x:Null}" ContinueOnError="True" DisplayName="Extract Table Data 'UL'" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/row&gt;&lt;column exact='1' name='Column0' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column1' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='4' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column2' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column3' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;/column&gt;&lt;/extract&gt;" ExtractedData="[out_dtTrenuri]" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486.4,146.4" sap2010:WorkflowViewState.IdRef="NExtractDataGeneric`1_1" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="25115f55-a4b8-4039-96c1-46d0f6bcaf62" Version="V5">
+                          <uix:NExtractDataGeneric x:TypeArguments="sd3:DataTable8" ContinueOnError="True" DisplayName="Extract Table Data 'UL'" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured' AddCvHeader='false' IsScrollEnabled='false'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column0' ReferenceIdx='0' Name='Ora plecare'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column1' ReferenceIdx='1' Name='Ora sosire'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column2' ReferenceIdx='2' Name='Durata'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column3' ReferenceIdx='3' Name='Companie'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/row&gt;&lt;column exact='1' name='Column0' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column1' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='4' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column2' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column3' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;/column&gt;&lt;/extract&gt;" ExtractedData="[dtTrenuri]" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486.4,142.4" sap2010:WorkflowViewState.IdRef="NExtractDataGeneric`1_1" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="25115f55-a4b8-4039-96c1-46d0f6bcaf62" Version="V5">
                             <uix:NExtractDataGeneric.Target>
-                              <uix:TargetAnchorable BrowserURL="https://mersultrenurilor.infofer.ro/ro-RO/Itineraries?DepartureStationName=Bucure%C8%99ti+Nord&amp;ArrivalStationName=General+Nicolae+D%C4%83sc%C4%83lescu&amp;DepartureDate=15.01.2026+0%3A00%3A00&amp;AreOnlyTrainsWithReservation=false&amp;ArrivalTrainRunningNumber=&amp;DepartureTrainRunningNumber=&amp;ConnectionsTypeId=1&amp;MinutesInDay=0&amp;OrderingTypeId=0&amp;TimeSelectionId=0&amp;ChangeStationName=&amp;BetweenTrainsMinimumMinutes=&amp;IsOnlineBuyingRequired=false&amp;IsBikesServiceRequired=false&amp;IsBarRestaurantServiceRequired=false&amp;IsSleeperCouchetteServiceRequired=false" ContentHash="wyyMp2_raEGlMixGcvWA_g" DesignTimeRectangle="266, -552, 1387, 2317" ElementType="List" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl parentid='div-results' tag='UL' /&gt;" Guid="1f44fe9d-2d76-45f9-8a29-b072781eeb6a" InformativeScreenshot="09f00ceb4bf65e34df132f7fa2f35596.png" Reference="B_4lzU5DB0unScnNBHgJSw/1MuzvA9gaEWZ0QNOQQPKzg" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Rute trenuri - București Nord - General Nicolae Dăscălescu - Mersul trenurilor CFR' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                              <uix:TargetAnchorable BrowserURL="https://mersultrenurilor.infofer.ro/ro-RO/Rute-trenuri/Bucuresti-(toate-statiile)/General-Nicolae-Dascalescu?DepartureDate=25.01.2026&amp;TimeSelectionId=0&amp;MinutesInDay=0&amp;OrderingTypeId=0&amp;ConnectionsTypeId=1&amp;BetweenTrainsMinimumMinutes=&amp;ChangeStationName=" DesignTimeRectangle="266, 740, 1387, 1518" ElementType="List" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl parentid='div-results' tag='UL' /&gt;" Guid="39fe6f5d-3e87-4d19-9955-8015c449cc52" InformativeScreenshot="a2fb762ed6593bde91ce78493e05bd85.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rute trenuri - Mersul trenurilor CFR' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                             </uix:NExtractDataGeneric.Target>
                           </uix:NExtractDataGeneric>
-                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="486.4,178.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Randuri: &quot; &amp; out_dtTrenuri.Rows.Count.ToString &amp;&#xA;&quot; | Coloane: &quot; &amp; out_dtTrenuri.Columns.Count.ToString]" />
-                          <Assign sap:VirtualizedContainerService.HintSize="486.4,178.4" sap2010:WorkflowViewState.IdRef="Assign_12">
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="486.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Randuri: &quot; &amp; dtTrenuri.Rows.Count.ToString &amp;&#xA;&quot; | Coloane: &quot; &amp; dtTrenuri.Columns.Count.ToString]" />
+                          <Assign sap:VirtualizedContainerService.HintSize="486.4,174.4" sap2010:WorkflowViewState.IdRef="Assign_12">
                             <Assign.To>
                               <OutArgument x:TypeArguments="x:Int32">[index]</OutArgument>
                             </Assign.To>
@@ -529,9 +543,9 @@
                               <InArgument x:TypeArguments="x:String">["0"]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Pret" DataTable="[out_dtTrenuri]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="486.4,224" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_7" />
-                          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" Unique="{x:Null}" ColumnName="Rezervare" DataTable="[out_dtTrenuri]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="486.4,224" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_6" MaxLength="-1" />
-                          <uix:NForEachUiElement DisplayName="For Each UI Element 'UL(1)'" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column0' Name='Buton'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='Column0' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='button' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="486.4,1056" sap2010:WorkflowViewState.IdRef="NForEachUiElement_5" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="25115f55-a4b8-4039-96c1-46d0f6bcaf62" Version="V5">
+                          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Pret" DataTable="[dtTrenuri]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="486.4,224" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_7" />
+                          <ui:AddDataColumn x:TypeArguments="x:String" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" Unique="{x:Null}" ColumnName="Rezervare" DataTable="[dtTrenuri]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="486.4,224" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_6" MaxLength="-1" />
+                          <uix:NForEachUiElement DisplayName="For Each UI Element 'UL(1)'" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured' AddCvHeader='true' IsScrollEnabled='false'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column0' Name='Buton'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='Column0' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='button' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="486.4,1060" sap2010:WorkflowViewState.IdRef="NForEachUiElement_5" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="25115f55-a4b8-4039-96c1-46d0f6bcaf62" Version="V5">
                             <uix:NForEachUiElement.Body>
                               <ActivityAction x:TypeArguments="x:Int32">
                                 <ActivityAction.Argument>
@@ -645,9 +659,9 @@
                               </scg:List>
                             </uix:NForEachUiElement.VariablesMetadata>
                           </uix:NForEachUiElement>
-                          <uix:NExtractDataGeneric x:TypeArguments="sd4:DataTable3" ExtractDataSettings="{x:Null}" ContinueOnError="True" DisplayName="Extract Table Data 'UL'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='Column0' attr='href'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='4' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='p' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column1' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='4' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" ExtractedData="[dtExtract]" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486.4,146.4" sap2010:WorkflowViewState.IdRef="NExtractDataGeneric`1_3" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="25115f55-a4b8-4039-96c1-46d0f6bcaf62" Version="V5">
+                          <uix:NExtractDataGeneric x:TypeArguments="sd4:DataTable6" ContinueOnError="True" DisplayName="Extract Table Data 'UL'" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured' AddCvHeader='false' IsScrollEnabled='false'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column0' Name='Rezervare'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column1' Name='Box'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='Column0' attr='href'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='4' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='p' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column1' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='4' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" ExtractedData="[dtExtract]" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486.4,146.4" sap2010:WorkflowViewState.IdRef="NExtractDataGeneric`1_5" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="25115f55-a4b8-4039-96c1-46d0f6bcaf62" Version="V5">
                             <uix:NExtractDataGeneric.Target>
-                              <uix:TargetAnchorable BrowserURL="https://mersultrenurilor.infofer.ro/ro-RO/Itineraries?DepartureStationName=Bucure%C8%99ti+Nord&amp;ArrivalStationName=General+Nicolae+D%C4%83sc%C4%83lescu&amp;DepartureDate=15.01.2026+0%3A00%3A00&amp;AreOnlyTrainsWithReservation=false&amp;ArrivalTrainRunningNumber=&amp;DepartureTrainRunningNumber=&amp;ConnectionsTypeId=1&amp;MinutesInDay=0&amp;OrderingTypeId=0&amp;TimeSelectionId=0&amp;ChangeStationName=&amp;BetweenTrainsMinimumMinutes=&amp;IsOnlineBuyingRequired=false&amp;IsBikesServiceRequired=false&amp;IsBarRestaurantServiceRequired=false&amp;IsSleeperCouchetteServiceRequired=false" ContentHash="659njWTzgUSWAqBGokYeQA" DesignTimeRectangle="266, -487, 1387, 2177" ElementType="List" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl parentid='div-results' tag='UL' /&gt;" Guid="65f6cafb-ea34-4039-bb18-dc26aef4d436" InformativeScreenshot="53e3542654541832ef18ed9da167e47c.png" Reference="B_4lzU5DB0unScnNBHgJSw/-c-NK1zI70SwUm9ZFmvhfA" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Rute trenuri - București Nord - General Nicolae Dăscălescu - Mersul trenurilor CFR' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                              <uix:TargetAnchorable BrowserURL="https://mersultrenurilor.infofer.ro/ro-RO/Rute-trenuri/Bucuresti-(toate-statiile)/General-Nicolae-Dascalescu?DepartureDate=25.01.2026&amp;TimeSelectionId=0&amp;MinutesInDay=0&amp;OrderingTypeId=0&amp;ConnectionsTypeId=1&amp;BetweenTrainsMinimumMinutes=&amp;ChangeStationName=" DesignTimeRectangle="266, -350, 1387, 2177" ElementType="List" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl parentid='div-results' tag='UL' /&gt;" Guid="7390f0ca-51d2-4ee8-873f-5c7c33c0aed5" InformativeScreenshot="94c3a635869a4541317cb682caef7e86.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rute trenuri - Mersul trenurilor CFR' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                             </uix:NExtractDataGeneric.Target>
                           </uix:NExtractDataGeneric>
                           <Assign sap:VirtualizedContainerService.HintSize="486.4,178.4" sap2010:WorkflowViewState.IdRef="Assign_24">
@@ -658,13 +672,13 @@
                               <InArgument x:TypeArguments="x:Int32">[-1]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtExtract]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="486.4,1216.8" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
+                          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtExtract]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="486.4,1208.8" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
                             <ui:ForEachRow.Body>
                               <ActivityAction x:TypeArguments="sd:DataRow">
                                 <ActivityAction.Argument>
                                   <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
                                 </ActivityAction.Argument>
-                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="484.8,1035.2" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="484.8,1027.2" sap2010:WorkflowViewState.IdRef="Sequence_33">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -688,7 +702,7 @@
                                         </Assign>
                                         <Assign sap:VirtualizedContainerService.HintSize="416,169.6" sap2010:WorkflowViewState.IdRef="Assign_26">
                                           <Assign.To>
-                                            <OutArgument x:TypeArguments="x:Object">[out_dtTrenuri.Rows(calatorieIndex)("Rezervare")]</OutArgument>
+                                            <OutArgument x:TypeArguments="x:Object">[dtTrenuri.Rows(calatorieIndex)("Rezervare")]</OutArgument>
                                           </Assign.To>
                                           <Assign.Value>
                                             <InArgument x:TypeArguments="x:String">[""]</InArgument>
@@ -707,20 +721,20 @@
                                       </Sequence>
                                     </If.Else>
                                   </If>
-                                  <If Condition="[Not String.IsNullOrWhiteSpace(row(&quot;Rezervare&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="451.2,392" sap2010:WorkflowViewState.IdRef="If_2">
+                                  <If Condition="[Not String.IsNullOrWhiteSpace(row(&quot;Rezervare&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="451.2,384" sap2010:WorkflowViewState.IdRef="If_2">
                                     <If.Then>
-                                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,233.6" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,229.6" sap2010:WorkflowViewState.IdRef="Sequence_36">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <Assign sap:VirtualizedContainerService.HintSize="416,169.6" sap2010:WorkflowViewState.IdRef="Assign_27">
+                                        <Assign sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="Assign_27">
                                           <Assign.To>
-                                            <OutArgument x:TypeArguments="x:Object">[out_dtTrenuri.Rows(calatorieIndex)("Rezervare")]</OutArgument>
+                                            <OutArgument x:TypeArguments="x:Object">[dtTrenuri.Rows(calatorieIndex)("Rezervare")]</OutArgument>
                                           </Assign.To>
                                           <Assign.Value>
-                                            <InArgument x:TypeArguments="x:Object">[out_dtTrenuri.Rows(calatorieIndex)("Rezervare").ToString + row("Rezervare").ToString + Environment.NewLine]</InArgument>
+                                            <InArgument x:TypeArguments="x:Object">[dtTrenuri.Rows(calatorieIndex)("Rezervare").ToString + row("Rezervare").ToString + Environment.NewLine]</InArgument>
                                           </Assign.Value>
                                         </Assign>
                                       </Sequence>
@@ -740,12 +754,13 @@
                               </ActivityAction>
                             </ui:ForEachRow.Body>
                           </ui:ForEachRow>
-                          <uix:NExtractDataGeneric x:TypeArguments="sd5:DataTable4" ExtractDataSettings="{x:Null}" ContinueOnError="True" DisplayName="Extract Table Data 'UL'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='Column0' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;/column&gt;&lt;/extract&gt;" ExtractedData="[dtDetalii]" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486.4,146.4" sap2010:WorkflowViewState.IdRef="NExtractDataGeneric`1_4" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="25115f55-a4b8-4039-96c1-46d0f6bcaf62" Version="V5">
+                          <uix:NExtractDataGeneric x:TypeArguments="sd5:DataTable12" ExtractDataSettings="{x:Null}" ContinueOnError="False" DisplayName="Extract Table Data 'UL'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='Column0' attr='fulltext'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='4' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;/column&gt;&lt;/extract&gt;" ExtractedData="[dtDetalii]" HealingAgentBehavior="SameAsCard" sap:VirtualizedContainerService.HintSize="486.4,142.4" sap2010:WorkflowViewState.IdRef="NExtractDataGeneric`1_8" LimitExtractionTo="Rows" ScopeIdentifier="25115f55-a4b8-4039-96c1-46d0f6bcaf62" Version="V5">
                             <uix:NExtractDataGeneric.Target>
-                              <uix:TargetAnchorable BrowserURL="https://mersultrenurilor.infofer.ro/ro-RO/Itineraries?DepartureStationName=Bucure%C8%99ti+Nord&amp;ArrivalStationName=General+Nicolae+D%C4%83sc%C4%83lescu&amp;DepartureDate=15.01.2026+0%3A00%3A00&amp;AreOnlyTrainsWithReservation=false&amp;ArrivalTrainRunningNumber=&amp;DepartureTrainRunningNumber=&amp;ConnectionsTypeId=1&amp;MinutesInDay=0&amp;OrderingTypeId=0&amp;TimeSelectionId=0&amp;ChangeStationName=&amp;BetweenTrainsMinimumMinutes=&amp;IsOnlineBuyingRequired=false&amp;IsBikesServiceRequired=false&amp;IsBarRestaurantServiceRequired=false&amp;IsSleeperCouchetteServiceRequired=false" ContentHash="jc1hhcXKHkaq0CrQfTbN7g" DesignTimeRectangle="266, -1871, 1387, 2843" ElementType="List" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl parentid='div-results' tag='UL' /&gt;" Guid="ef71ddf3-1c66-4272-8e29-93dc058ba102" InformativeScreenshot="056df3e595ef14f12c612188559380c3.png" Reference="B_4lzU5DB0unScnNBHgJSw/EjSi_4iSzEWLTvM4EH7cCg" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Rute trenuri - București Nord - General Nicolae Dăscălescu - Mersul trenurilor CFR' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
+                              <uix:TargetAnchorable BrowserURL="https://mersultrenurilor.infofer.ro/ro-RO/Rute-trenuri/General-Nicolae-Dascalescu/Galati" ContentHash="nMO0egvNR0ez0CovWYrDSA" DesignTimeRectangle="257, -1943, 1387, 3166" ElementType="List" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl parentid='div-results' tag='UL' /&gt;" Guid="4d4458d9-ea40-492b-84b8-d4cb3afea8a1" InformativeScreenshot="a5e9e9ae3ba63bedc4c704778ff52694.png" Reference="B_4lzU5DB0unScnNBHgJSw/Unl3t3_hckudyJOKVUW8hA" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rute trenuri - General Nicolae Dăscălescu - Galați - Mersul trenurilor CFR' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive" />
                             </uix:NExtractDataGeneric.Target>
                           </uix:NExtractDataGeneric>
-                          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[indexDetalii]" DataTable="[dtDetalii]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="486.4,1566.4" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
+                          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="486.4,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[dtDetalii.Rows.Count.ToString]" />
+                          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[indexDetalii]" DataTable="[dtDetalii]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="486.4,1562.4" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
                             <ui:ForEachRow.Body>
                               <ActivityAction x:TypeArguments="sd:DataRow">
                                 <ActivityAction.Argument>
@@ -774,8 +789,8 @@
                                     </Assign.To>
                                     <Assign.Value>
                                       <InArgument x:TypeArguments="str:MatchCollection" xml:space="preserve">[System.Text.RegularExpressions.Regex.Matches(
-    row("Preturi").toString,
-    "\d+,\d{2}"
+    row("Pret").toString,
+    "\d+,\d{1,2}"
 )]</InArgument>
                                     </Assign.Value>
                                   </Assign>
@@ -815,7 +830,7 @@
                                         </sap:WorkflowViewStateService.ViewState>
                                         <Assign sap:VirtualizedContainerService.HintSize="416,169.6" sap2010:WorkflowViewState.IdRef="Assign_23">
                                           <Assign.To>
-                                            <OutArgument x:TypeArguments="x:Object">[out_dtTrenuri.Rows(indexDetalii)("Pret")]</OutArgument>
+                                            <OutArgument x:TypeArguments="x:Object">[dtTrenuri.Rows(indexDetalii)("Pret")]</OutArgument>
                                           </Assign.To>
                                           <Assign.Value>
                                             <InArgument x:TypeArguments="x:String">["Indisponibil"]</InArgument>
@@ -832,7 +847,7 @@
                                         </sap:WorkflowViewStateService.ViewState>
                                         <Assign sap:VirtualizedContainerService.HintSize="416,169.6" sap2010:WorkflowViewState.IdRef="Assign_28">
                                           <Assign.To>
-                                            <OutArgument x:TypeArguments="x:Object">[out_dtTrenuri.Rows(indexDetalii)("Pret")]</OutArgument>
+                                            <OutArgument x:TypeArguments="x:Object">[dtTrenuri.Rows(indexDetalii)("Pret")]</OutArgument>
                                           </Assign.To>
                                           <Assign.Value>
                                             <InArgument x:TypeArguments="x:String">[totalPret.ToString]</InArgument>
@@ -856,7 +871,7 @@
                       </ActivityFunc>
                     </uix:NApplicationCard.OCREngine>
                     <uix:NApplicationCard.TargetApp>
-                      <uix:TargetApp Area="-9, -9, 1938, 1048" BrowserType="Edge" ContentHash="nLIwdPj9l0mOKkpzSJ1cSQ" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFESURBVDhPYxgF2IGwsDBbYmJi7qxZs7bPnj17Z1JSUra8vDwrVBo/AGpmbW5u3jR//vz/a9as+b9w4cL/mzZt+t/a2rpFTEyMGaoMN4gNCkt4evHmv8VzF/w/fPjw/1OnTv0/ffTE/4fnrv2P8guOgCpDgCWc7j1L2d0ewPAaufD36+TC/58tnv7/y5cv/z98+ABmg8TWyIa9RVYL0suwTC2MaZmAT9gyHs9ZQLx3jUzo2006Sf+3GKf9n9jR83/3pm1gNkhstWTwK5AasFqgnsVqEYxQd0DAUj4vsVot75zL6/f+f7rr9P8q9+j/CzPrwexzq3f+q1V0S17C5ykKVY4dKCoqMhYVFU1++PDh37Vr1/4/cuTI/3v37v0vLi7ut7e3h6oiAKysrBicgaCqqqqnvLy8G8h06O7uhsqOAlTAwAAA2QGj2yFdiV4AAAAASUVORK5CYII=" InformativeScreenshot="f8a16a9c2ca6bd3ce3fd8b66d6aba299.jpg" Reference="B_4lzU5DB0unScnNBHgJSw/3ZvlJitlUEe2q_twsskKSA" Selector="&lt;html app='msedge.exe' title='Rute trenuri*' /&gt;" Url="[URLrute]" Version="V2">
+                      <uix:TargetApp Area="-9, -9, 1938, 1048" BrowserType="Chrome" ContentHash="noZHeCgtmES82NjxfKxlWw" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFESURBVDhPYxgF2IGwsDBbYmJi7qxZs7bPnj17Z1JSUra8vDwrVBo/AGpmbW5u3jR//vz/a9as+b9w4cL/mzZt+t/a2rpFTEyMGaoMN4gNCkt4evHmv8VzF/w/fPjw/1OnTv0/ffTE/4fnrv2P8guOgCpDgCWc7j1L2d0ewPAaufD36+TC/58tnv7/y5cv/z98+ABmg8TWyIa9RVYL0suwTC2MaZmAT9gyHs9ZQLx3jUzo2006Sf+3GKf9n9jR83/3pm1gNkhstWTwK5AasFqgnsVqEYxQd0DAUj4vsVot75zL6/f+f7rr9P8q9+j/CzPrwexzq3f+q1V0S17C5ykKVY4dKCoqMhYVFU1++PDh37Vr1/4/cuTI/3v37v0vLi7ut7e3h6oiAKysrBicgaCqqqqnvLy8G8h06O7uhsqOAlTAwAAA2QGj2yFdiV4AAAAASUVORK5CYII=" InformativeScreenshot="db4393225aab01b5d25806122bbd8c42.jpg" Reference="B_4lzU5DB0unScnNBHgJSw/3ZvlJitlUEe2q_twsskKSA" Selector="&lt;html app='chrome.exe' title='Rute trenuri*' /&gt;" Url="[URLrute]" Version="V2">
                         <uix:TargetApp.Arguments>
                           <InArgument x:TypeArguments="x:String" />
                         </uix:TargetApp.Arguments>
@@ -866,6 +881,24 @@
                       </uix:TargetApp>
                     </uix:NApplicationCard.TargetApp>
                   </uix:NApplicationCard>
+                  <ui:BuildDataTable DataTable="[out_dtTrenuri]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="521.6,96" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;TripId&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;TransportType&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Provider&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;DepartureTime&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ArrivalTime&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Duration&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Price&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;BookingLink&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtTrenuri]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="521.6,456.8" sap2010:WorkflowViewState.IdRef="ForEachRow_7">
+                    <ui:ForEachRow.Body>
+                      <ActivityAction x:TypeArguments="sd:DataRow">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="449.6,271.2" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&#xA;    in_tripId,                    ' tripid&#xA;    &quot;Train&quot;,               ' transporttype&#xA;    row(&quot;Companie&quot;),       ' provider&#xA;    row(&quot;Ora plecare&quot;),    ' departure&#xA;    row(&quot;Ora sosire&quot;),     ' arrival&#xA;    row(&quot;Durata&quot;),         ' duration&#xA;    row(&quot;Pret&quot;),           ' price&#xA;    row(&quot;Rezervare&quot;)  ' bookinglink&#xA;}]" DataTable="[out_dtTrenuri]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="416,211.2" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ForEachRow.Body>
+                  </ui:ForEachRow>
                   <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="521.6,52" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
                 </Sequence>
               </ActivityAction>

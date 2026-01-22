@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="nMO0egvNR0ez0CovWYrDSA" Reference="B_4lzU5DB0unScnNBHgJSw/Unl3t3_hckudyJOKVUW8hA" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="https://mersultrenurilor.infofer.ro/ro-RO/Rute-trenuri/General-Nicolae-Dascalescu/Galati" DesignTimeRectangle="257, -1943, 1387, 3166" ElementType="List" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl parentid='div-results' tag='UL' /&gt;" Guid="4d4458d9-ea40-492b-84b8-d4cb3afea8a1" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rute trenuri - General Nicolae Dăscălescu - Galați - Mersul trenurilor CFR' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="a5e9e9ae3ba63bedc4c704778ff52694.png" xmlns="">08nXwEMbGdkCxa8PALl8XKg</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">ExtractDataGeneric</x:String>
+    <x:Null x:Key="NextLinkTarget" />
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>
